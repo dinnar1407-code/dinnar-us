@@ -23,11 +23,11 @@ function ProductCard({ product }: { product: Product }) {
       href={`/products/${product.slug}`}
       className="card-surface block overflow-hidden transition hover:border-white/15 group"
     >
-      <div className="aspect-[4/3] w-full overflow-hidden bg-white/5">
+      <div className="aspect-[4/3] w-full overflow-hidden bg-gradient-to-br from-white/10 to-white/5 flex items-center justify-center">
         <img
           src={product.image}
           alt={product.title.en || product.title.zh}
-          className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+          className="max-h-full max-w-full object-contain"
           loading="lazy"
         />
       </div>

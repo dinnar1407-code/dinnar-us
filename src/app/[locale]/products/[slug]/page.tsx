@@ -53,11 +53,14 @@ export default function ProductPage({ params }: Props) {
         </div>
         {product.image && (
           <div className="container-page mt-10">
-            <img
-              src={product.image}
-              alt={product.title.en || product.title.zh}
-              className="rounded-2xl w-full max-h-96 object-cover ring-1 ring-white/10"
-            />
+            <div className="max-w-2xl rounded-2xl overflow-hidden ring-1 ring-white/10 bg-white/5">
+              <img
+                src={product.image}
+                alt={product.title.en || product.title.zh}
+                className="w-full object-contain"
+                style={{ maxHeight: '400px' }}
+              />
+            </div>
           </div>
         )}
       </section>
