@@ -88,7 +88,7 @@ export const products: Product[] = [
         "检测系统"
       ]
     },
-    "image": "/images/1697607395.png"
+    "image": "/images/screenshots/industry_electron.png"
   },
   {
     "slug": "p-589",
@@ -815,7 +815,7 @@ export const products: Product[] = [
         "应用案例"
       ]
     },
-    "image": "/images/1697608405.png"
+    "image": "/images/screenshots/product_aci_s1000.png"
   },
   {
     "slug": "p-490",
@@ -855,7 +855,7 @@ export const products: Product[] = [
         "检测类型"
       ]
     },
-    "image": "/images/1697608433.png"
+    "image": "/images/screenshots/product_watch_light.png"
   },
   {
     "slug": "p-683",
@@ -1199,7 +1199,7 @@ export const products: Product[] = [
         "应用案例"
       ]
     },
-    "image": "/images/1697609589.png"
+    "image": "/images/screenshots/industry_semiconductor.png"
   },
   {
     "slug": "p-859",
@@ -1460,7 +1460,7 @@ export const products: Product[] = [
         "检测系统"
       ]
     },
-    "image": "/images/1697610340.png"
+    "image": "/images/screenshots/industry_semiconductor.png"
   },
   {
     "slug": "p-1072",
