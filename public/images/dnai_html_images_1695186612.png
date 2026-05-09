@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    </head>
+    <noscript>The browser does not support JavaScript. Cannot be accessed！</noscript>  
+    <body>
+       <H1 id="msg"></H1>
+    </body>
+    <script type="text/javascript">
+        var dt = new Date(); 
+        dt.setSeconds(dt.getSeconds() + 60);
+        document.cookie = "_wtsjsk=79dacff2c1f01392b743f6641336af77; path=/ ";
+        var cookiesEnabled = document.cookie.indexOf("_wtsjsk=") != -1; 
+
+        function getCookie(name)
+            {
+                var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+                if(arr=document.cookie.match(reg))
+                    return arr[2];
+                else
+                    return null;
+            }
+            
+        var preurl = getCookie("_wtspurl"); 
+        var cookie_CaptchaKey = getCookie("_wtscpk");  
+        var cookie_Expire = getCookie("_wtsexp");  
+
+        if(cookie_CaptchaKey == null||cookie_Expire == null){
+            var msg = "Browser security check in progress..."+preurl+"...Please wait.";
+            document.getElementById("msg").innerHTML=msg;
+            if (preurl==null)
+            {
+                if(!cookiesEnabled) { 
+                        var msg ="Cookie not supported by browser. Cannot be accessed.";
+                        document.getElementById("msg").innerHTML=msg;
+                } else {
+					    setTimeout(function() {location.reload();}, 3000);
+                        //preurl = window.location.pathname;
+                        //setTimeout("javascript:window.location.href ="+preurl+";",3000);
+                }
+            } else {
+				setTimeout(function() {location.reload();}, 3000);
+                // setTimeout("javascript:window.location.href ="+preurl+";",3000);
+            }
+
+        }else{
+            window.location.href = preurl ;
+        }
+    </script>
+</html>

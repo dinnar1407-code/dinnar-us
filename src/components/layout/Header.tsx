@@ -41,9 +41,7 @@ export function Header() {
     >
       <div className="container-page flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center gap-2.5">
-          <span className="grid h-7 w-7 place-items-center rounded-lg bg-gradient-to-br from-accent-300 to-signal-500 text-ink-950 font-display font-bold">
-            D
-          </span>
+          <img src="/images/logo.png" alt="Dinnar" className="h-8 w-auto" />
           <span className="text-display text-base font-semibold tracking-tight">
             Dinnar
           </span>
