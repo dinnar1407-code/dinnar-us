@@ -51,6 +51,15 @@ export default function ProductPage({ params }: Props) {
             </p>
           </div>
         </div>
+        {product.image && (
+          <div className="container-page mt-10">
+            <img
+              src={product.image}
+              alt={product.title.en || product.title.zh}
+              className="rounded-2xl w-full max-h-96 object-cover ring-1 ring-white/10"
+            />
+          </div>
+        )}
       </section>
 
       {/* Specs / Headings */}

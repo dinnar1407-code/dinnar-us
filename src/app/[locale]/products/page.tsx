@@ -21,16 +21,26 @@ function ProductCard({ product }: { product: Product }) {
   return (
     <Link
       href={`/products/${product.slug}`}
-      className="card-surface block p-5 transition hover:border-white/15 group"
+      className="card-surface block overflow-hidden transition hover:border-white/15 group"
     >
-      <p className="text-xs font-mono uppercase tracking-wider text-accent-400/70 mb-2">
-        {product.category}
-      </p>
-      <h3 className="text-display text-base font-semibold text-white leading-snug">
-        {product.title.en || product.title.zh}
-      </h3>
-      <div className="mt-4 inline-flex items-center gap-1.5 text-sm text-accent-300 group-hover:translate-x-0.5 transition-transform">
-        View <ArrowRight size={14} />
+      <div className="aspect-[4/3] w-full overflow-hidden bg-white/5">
+        <img
+          src={product.image}
+          alt={product.title.en || product.title.zh}
+          className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+          loading="lazy"
+        />
+      </div>
+      <div className="p-5">
+        <p className="text-xs font-mono uppercase tracking-wider text-accent-400/70 mb-2">
+          {product.category}
+        </p>
+        <h3 className="text-display text-base font-semibold text-white leading-snug">
+          {product.title.en || product.title.zh}
+        </h3>
+        <div className="mt-4 inline-flex items-center gap-1.5 text-sm text-accent-300 group-hover:translate-x-0.5 transition-transform">
+          View <ArrowRight size={14} />
+        </div>
       </div>
     </Link>
   );
