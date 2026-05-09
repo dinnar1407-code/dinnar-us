@@ -1,0 +1,287 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1778361957617,
+  "projectRoot": "/Users/wheat/Projects/dinnar-us",
+  "techStack": {
+    "languages": [],
+    "frameworks": [],
+    "packageManager": null,
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": null,
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": null,
+    "scripts": {}
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [],
+    "gitBranches": null
+  },
+  "customNotes": [],
+  "directoryMap": {},
+  "hotPaths": [
+    {
+      "path": "content-scraped/scrape.py",
+      "accessCount": 1,
+      "lastAccessed": 1778362097534,
+      "type": "file"
+    },
+    {
+      "path": "package.json",
+      "accessCount": 1,
+      "lastAccessed": 1778362198693,
+      "type": "file"
+    },
+    {
+      "path": "tsconfig.json",
+      "accessCount": 1,
+      "lastAccessed": 1778362215995,
+      "type": "file"
+    },
+    {
+      "path": "next.config.ts",
+      "accessCount": 1,
+      "lastAccessed": 1778362228804,
+      "type": "file"
+    },
+    {
+      "path": "tailwind.config.ts",
+      "accessCount": 1,
+      "lastAccessed": 1778362260324,
+      "type": "file"
+    },
+    {
+      "path": "src/app/layout.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1778362808424,
+      "type": "file"
+    },
+    {
+      "path": "src/app/globals.css",
+      "accessCount": 1,
+      "lastAccessed": 1778362809738,
+      "type": "file"
+    },
+    {
+      "path": "src/i18n/request.ts",
+      "accessCount": 1,
+      "lastAccessed": 1778362810256,
+      "type": "file"
+    },
+    {
+      "path": "src/i18n/routing.ts",
+      "accessCount": 1,
+      "lastAccessed": 1778362810792,
+      "type": "file"
+    },
+    {
+      "path": "src/lib/desensitize.ts",
+      "accessCount": 1,
+      "lastAccessed": 1778362810849,
+      "type": "file"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "accessCount": 1,
+      "lastAccessed": 1778362810993,
+      "type": "file"
+    },
+    {
+      "path": "src/content/capabilities.ts",
+      "accessCount": 1,
+      "lastAccessed": 1778362811488,
+      "type": "file"
+    },
+    {
+      "path": "src/content/industries.ts",
+      "accessCount": 1,
+      "lastAccessed": 1778362811723,
+      "type": "file"
+    },
+    {
+      "path": "src/messages/en.json",
+      "accessCount": 1,
+      "lastAccessed": 1778362823992,
+      "type": "file"
+    },
+    {
+      "path": "src/content/products.ts",
+      "accessCount": 1,
+      "lastAccessed": 1778362824436,
+      "type": "file"
+    },
+    {
+      "path": "src/components/layout/Header.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1778362834800,
+      "type": "file"
+    },
+    {
+      "path": "src/components/layout/Footer.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1778362835288,
+      "type": "file"
+    },
+    {
+      "path": "src/components/three/HeroScene.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1778362835696,
+      "type": "file"
+    },
+    {
+      "path": "src/components/three/ParticleField.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1778362836510,
+      "type": "file"
+    },
+    {
+      "path": "src/components/three/ProductScene.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1778362836922,
+      "type": "file"
+    },
+    {
+      "path": "src/components/ui/AnimatedCounter.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1778362837806,
+      "type": "file"
+    },
+    {
+      "path": "src/components/ui/RevealOnScroll.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1778362838189,
+      "type": "file"
+    },
+    {
+      "path": "src/components/ui/SectionHeader.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1778362838605,
+      "type": "file"
+    },
+    {
+      "path": "src/components/ui/TiltCard.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1778362839412,
+      "type": "file"
+    },
+    {
+      "path": "src/messages/zh.json",
+      "accessCount": 1,
+      "lastAccessed": 1778362865856,
+      "type": "file"
+    },
+    {
+      "path": "public/images/industry-electron.svg",
+      "accessCount": 1,
+      "lastAccessed": 1778362961853,
+      "type": "file"
+    },
+    {
+      "path": "public/images/industry-energy.svg",
+      "accessCount": 1,
+      "lastAccessed": 1778362967174,
+      "type": "file"
+    },
+    {
+      "path": "public/images/industry-semiconductor.svg",
+      "accessCount": 1,
+      "lastAccessed": 1778362972598,
+      "type": "file"
+    },
+    {
+      "path": "public/images/industry-display.svg",
+      "accessCount": 1,
+      "lastAccessed": 1778362976742,
+      "type": "file"
+    },
+    {
+      "path": "public/images/industry-other.svg",
+      "accessCount": 1,
+      "lastAccessed": 1778362980682,
+      "type": "file"
+    },
+    {
+      "path": "public/images/product-inspection.svg",
+      "accessCount": 1,
+      "lastAccessed": 1778362985235,
+      "type": "file"
+    },
+    {
+      "path": "public/images/product-measurement.svg",
+      "accessCount": 1,
+      "lastAccessed": 1778362988285,
+      "type": "file"
+    },
+    {
+      "path": "public/images/product-function.svg",
+      "accessCount": 1,
+      "lastAccessed": 1778362991454,
+      "type": "file"
+    },
+    {
+      "path": "public/images/product-assembly.svg",
+      "accessCount": 1,
+      "lastAccessed": 1778362995659,
+      "type": "file"
+    },
+    {
+      "path": "public/images/product-intelligence.svg",
+      "accessCount": 1,
+      "lastAccessed": 1778362999817,
+      "type": "file"
+    },
+    {
+      "path": "public/images/product-software.svg",
+      "accessCount": 1,
+      "lastAccessed": 1778363006482,
+      "type": "file"
+    },
+    {
+      "path": "public/images/og-default.svg",
+      "accessCount": 1,
+      "lastAccessed": 1778363013582,
+      "type": "file"
+    },
+    {
+      "path": "src/components/sections/Hero.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1778363147767,
+      "type": "file"
+    },
+    {
+      "path": "src/components/sections/Capabilities.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1778363158953,
+      "type": "file"
+    },
+    {
+      "path": "src/components/sections/LightsOut.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1778363168542,
+      "type": "file"
+    },
+    {
+      "path": "src/components/sections/Industries.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1778363180104,
+      "type": "file"
+    },
+    {
+      "path": "src/components/sections/Products.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1778363199212,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}

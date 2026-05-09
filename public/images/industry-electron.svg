@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#06bff0" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#7c4dff" stop-opacity="0.55"/>
+    </linearGradient>
+    <pattern id="p" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M0 20h40M20 0v40" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="500" fill="#070b18"/>
+  <rect width="800" height="500" fill="url(#p)"/>
+  <g fill="none" stroke="url(#g)" stroke-width="2.5">
+    <rect x="220" y="120" width="360" height="260" rx="20"/>
+    <rect x="260" y="160" width="280" height="180" rx="10" stroke-opacity="0.6"/>
+    <circle cx="400" cy="250" r="60"/>
+    <circle cx="400" cy="250" r="30"/>
+  </g>
+  <g fill="#39d6ff" opacity="0.85">
+    <circle cx="240" cy="140" r="3"/>
+    <circle cx="560" cy="360" r="3"/>
+    <circle cx="560" cy="140" r="3"/>
+    <circle cx="240" cy="360" r="3"/>
+  </g>
+  <text x="400" y="430" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="22" font-weight="600" fill="rgba(255,255,255,0.85)" letter-spacing="2">3C CONSUMER ELECTRONICS</text>
+</svg>

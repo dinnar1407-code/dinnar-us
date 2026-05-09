@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#7c4dff" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#39d6ff" stop-opacity="0.45"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="#070b18"/>
+  <path d="M180 300 Q260 180 360 300 T540 300 T720 300" fill="none" stroke="url(#g)" stroke-width="2.5"/>
+  <text x="400" y="380" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="20" font-weight="600" fill="rgba(255,255,255,0.85)" letter-spacing="2">FUNCTIONAL TEST</text>
+</svg>

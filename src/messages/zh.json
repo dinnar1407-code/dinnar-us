@@ -1,0 +1,286 @@
+{
+  "common": {
+    "company": "鼎纳自动智能（美国）公司",
+    "shortName": "鼎纳",
+    "city": "美国加州 圣何塞",
+    "tagline": "驶向下一代无人工厂",
+    "exploreMore": "了解详情",
+    "learnMore": "查看更多",
+    "getStarted": "立即开始",
+    "contactUs": "联系销售",
+    "viewProduct": "查看产品",
+    "viewIndustry": "查看行业",
+    "back": "返回",
+    "all": "全部",
+    "menu": "菜单",
+    "language": "语言",
+    "english": "English",
+    "chinese": "中文",
+    "footer": {
+      "rights": "保留所有权利",
+      "address": "1735 Technology Drive, Suite 720, San Jose, CA 95110",
+      "email": "hello@dinnar.us",
+      "tagline": "为 2030 年的无人工厂构建技术底座。"
+    }
+  },
+  "nav": {
+    "home": "首页",
+    "industries": "行业",
+    "products": "产品",
+    "technology": "技术",
+    "about": "关于我们",
+    "contact": "联系我们"
+  },
+  "hero": {
+    "eyebrow": "DNAI · 无人工厂自动化平台",
+    "title": "构建永不停转的工厂。",
+    "subtitle": "我们将视觉、运动控制与决策引擎融为一个统一平台，让产线在没有任何工人介入的情况下持续运转——从检测、装配到物流，全部为无人工厂时代而生。",
+    "cta": "了解平台",
+    "ctaSecondary": "联系工程团队",
+    "stat1Label": "百万件残次品检出",
+    "stat1Value": "<10",
+    "stat2Label": "产能提升",
+    "stat2Value": "3.4×",
+    "stat3Label": "已部署工厂",
+    "stat3Value": "120+",
+    "stat4Label": "在线检测产线",
+    "stat4Value": "850+"
+  },
+  "capabilities": {
+    "eyebrow": "核心能力",
+    "title": "支撑无人工厂的六大引擎。",
+    "subtitle": "视觉、机器人与人工智能不是拼装，而是共同设计。",
+    "items": {
+      "vision": {
+        "title": "亚像素机器视觉",
+        "body": "定制光学、多光谱照明、PatMax 级几何匹配，可在产线节拍下分辨小于 5 微米的缺陷。"
+      },
+      "ai": {
+        "title": "本地化缺陷 AI",
+        "body": "针对每个 SKU 自监督训练，分钟级重新部署，产线无需依赖云端。"
+      },
+      "motion": {
+        "title": "闭环运动控制",
+        "body": "六轴机器人、直线模组、力反馈夹具协同，达到微米级重复精度。"
+      },
+      "metrology": {
+        "title": "在线测量",
+        "body": "共聚焦、结构光、激光干涉等多模态测量融合到每一件零件的数据档案。"
+      },
+      "data": {
+        "title": "工厂数据底座",
+        "body": "每件零件、每个节拍均接入 OPC-UA / MQTT 数据底座，全链路可追溯。"
+      },
+      "ops": {
+        "title": "无人化运维",
+        "body": "自恢复、跨工位自动平衡、零接触 SKU 切换。"
+      }
+    }
+  },
+  "lightsOut": {
+    "eyebrow": "无人工厂时代",
+    "title": "从自动化检测到完全自主生产。",
+    "subtitle": "今天大多数工厂仍然每班需要人。鼎纳为你提供把人逐步、安全、按线移除的平台。",
+    "phaseAutomate": {
+      "title": "1 · 自动化",
+      "body": "用确定性的视觉系统替代人工检测与测量。"
+    },
+    "phaseConnect": {
+      "title": "2 · 互联",
+      "body": "把每个工位连接到统一数据底座，缺陷可关联，节拍可度量。"
+    },
+    "phaseDecide": {
+      "title": "3 · 决策",
+      "body": "闭环 AI 解决微停机、平衡产能、自动派发返工，无需操作员。"
+    },
+    "phaseLightsOut": {
+      "title": "4 · 无人化",
+      "body": "关掉灯。生产继续、自恢复、自上报——完全自主。"
+    }
+  },
+  "industries": {
+    "eyebrow": "服务行业",
+    "title": "为全球最难的生产问题而构建。",
+    "subtitle": "已落地于消费电子、电动车电池、半导体与显示面板。",
+    "electron": {
+      "title": "3C 消费电子",
+      "summary": "手机、笔电、可穿戴——外观、尺寸、功能检测，全部以产线节拍完成。",
+      "longDescription": "从全球头部消费电子 OEM 到其一级供应商，鼎纳系统覆盖手机摄像头模组、笔电外壳、手表后盖、PCB 装配与麦克风腔体。我们在每件零件 1 秒以内的节拍下，对 30 微米以下的外观缺陷保持 99.97% 以上的召回率。",
+      "highlights": [
+        "手机摄像头色差与全尺寸检测",
+        "笔电外观与 BC/TC/DH 尺寸量测",
+        "PCB / Phone Board 2D AOI",
+        "手表后盖透光与贴合检测"
+      ]
+    },
+    "energy": {
+      "title": "新能源 / 汽车",
+      "summary": "电池电芯、模组、玻璃、驱动部件——为高混线、高产能 EV 产线而生。",
+      "longDescription": "电动车方型与软包电芯需要零缺陷外观与尺寸控制。鼎纳产线覆盖复合隔膜、H1H2 锂电、汽车前挡 PVD 膜对位贴合、车门锁装配，提供确定性保障。",
+      "highlights": [
+        "方型与软包电池外观检测",
+        "复合电池薄膜缺陷检测",
+        "汽车前挡风玻璃 + PVD 膜高精度对位贴合",
+        "车门锁与小型零件装配"
+      ]
+    },
+    "semiconductor": {
+      "title": "半导体",
+      "summary": "晶圆、芯片、基板级检测与装配，亚微米重复精度。",
+      "longDescription": "晶圆切割片检测、传感器装配、电机壳钻攻一体机覆盖业内最严苛的公差。集成的热补偿与振动隔离让测量在整班工时内保持稳定。",
+      "highlights": [
+        "单晶圆切割片缺陷检测",
+        "微型传感器装配线",
+        "电机壳钻攻一体机",
+        "亚微米精度 + 热补偿"
+      ]
+    },
+    "display": {
+      "title": "显示面板",
+      "summary": "Mini-LED、OLED、LCD：从胶水到背光到点亮全流程检测。",
+      "longDescription": "从 Mini-LED 胶水缺陷检测到背光板尺寸轮廓测量，再到 LCD 点亮全幅量测——定制光学抑制摩尔纹，并以产线节拍解析亚像素异常。",
+      "highlights": [
+        "Mini-LED 胶水缺陷检测",
+        "背光板尺寸 + 轮廓检测",
+        "LCD 点亮全幅量测",
+        "平板外观缺陷通用平台"
+      ]
+    },
+    "other": {
+      "title": "医疗与工业",
+      "summary": "医用吻合器、盐水瓶、精密机械件——按医疗与 ISO 标准制造。",
+      "longDescription": "医用吻合器仓订检测、盐水瓶缺陷检测、万向十字轴外观检测——按 ISO 13485 / GMP 等级设计，每件零件具备完整审计记录。",
+      "highlights": [
+        "医用吻合器仓订检测",
+        "医用盐水瓶缺陷检测",
+        "万向十字轴外观检测",
+        "每件零件完整审计追踪"
+      ]
+    }
+  },
+  "products": {
+    "eyebrow": "旗舰平台",
+    "title": "ACI-S1000 + Vision One。",
+    "subtitle": "一颗大脑，一套训练器，覆盖每一条产线。",
+    "flagshipBody": "ACI-S1000 是每一条鼎纳产线的中枢：以亚毫秒级节拍统一编排视觉、运动控制与 AI 推理。Vision One 是工程师用来设计、训练与部署检测模型的开发平台，无需手写底层代码。",
+    "aciTitle": "ACI-S1000",
+    "aciTagline": "无人工厂控制器 · 工厂边缘",
+    "aciHighlights": [
+      "亚毫秒级视觉 + 运动同步",
+      "单节点 16 路 GPU 加速检测",
+      "热插拔产线模块、零停机",
+      "原生支持 OPC-UA / MQTT / EtherCAT"
+    ],
+    "visionTitle": "Vision One",
+    "visionTagline": "视觉开发平台",
+    "visionHighlights": [
+      "拖拽式流水线构建",
+      "PatMax 级几何匹配 + 亚像素边缘",
+      "自监督缺陷分类器",
+      "一键部署到 ACI-S1000"
+    ],
+    "viewAll": "查看完整设备目录",
+    "categories": {
+      "inspection": "视觉检测设备",
+      "measurement": "视觉量测设备",
+      "function": "功能检测设备",
+      "assembly": "智能装配设备",
+      "intelligence": "智能检测设备",
+      "software": "软件"
+    }
+  },
+  "tech": {
+    "eyebrow": "客户为何选择鼎纳",
+    "title": "无人产线背后的数字。",
+    "items": {
+      "uptime": {
+        "value": "99.93%",
+        "label": "平均产线在线率"
+      },
+      "cycle": {
+        "value": "<800 ms",
+        "label": "单件节拍"
+      },
+      "recall": {
+        "value": "99.97%",
+        "label": "缺陷召回率"
+      },
+      "deploy": {
+        "value": "14 天",
+        "label": "从产线评估到上线"
+      }
+    }
+  },
+  "ome": {
+    "eyebrow": "光 · 机 · 电",
+    "title": "做其他自动化公司不愿做的整机栈。",
+    "subtitle": "大多数厂商做集成，我们做工程。",
+    "optics": {
+      "title": "光学",
+      "body": "定制远心镜头、多光谱同轴照明、自研偏振片堆栈，按 SKU 调谐——全部自研、自磨。"
+    },
+    "mechanics": {
+      "title": "机械",
+      "body": "花岗岩工位、精密直线模组、振动隔离工作单元，亚微米重复精度可服役 8 年以上。"
+    },
+    "electronics": {
+      "title": "电子",
+      "body": "ACI-S1000 主板、FPGA 成像卡、EtherCAT 运动控制器——每一块 PCBA 都由鼎纳自制并测试。"
+    }
+  },
+  "about": {
+    "eyebrow": "关于鼎纳",
+    "title": "在圣何塞研发，部署到全球。",
+    "body": "鼎纳自动智能（美国）公司是为下一代无人工厂构建技术底座的美国运营公司。团队来自全球顶尖的视觉、机器人与 AI 实验室，系统正在为全球 500 强消费电子、电动车、电池与半导体厂商运行三大洲的产线。",
+    "missionTitle": "我们的使命",
+    "missionBody": "构建支撑全球第一批完全无人工厂的平台——比任何由人主导的产线更安全、更精确、更可持续。",
+    "stat1": {
+      "value": "2008",
+      "label": "成立年份"
+    },
+    "stat2": {
+      "value": "120+",
+      "label": "全球客户"
+    },
+    "stat3": {
+      "value": "850+",
+      "label": "已部署产线"
+    },
+    "stat4": {
+      "value": "300+",
+      "label": "工程师团队"
+    }
+  },
+  "contact": {
+    "eyebrow": "联系我们",
+    "title": "把无人化引入你的产线。",
+    "subtitle": "告诉我们你的生产环境。工程师会在一个工作日内回复。",
+    "name": "姓名",
+    "email": "公司邮箱",
+    "company": "公司名称",
+    "industry": "行业",
+    "message": "请描述你的产线",
+    "submit": "提交",
+    "successTitle": "已收到你的留言。",
+    "successBody": "工程师会在一个工作日内联系你。"
+  },
+  "industriesPage": {
+    "title": "行业",
+    "subtitle": "我们为无人工厂时代设计的产线。"
+  },
+  "productsPage": {
+    "title": "产品",
+    "subtitle": "检测、量测、功能与装配平台。",
+    "specs": "技术规格",
+    "applications": "应用场景",
+    "related": "相关产品"
+  },
+  "technologyPage": {
+    "title": "核心技术",
+    "subtitle": "无人产线在没人值守时如何持续运转。"
+  },
+  "aboutPage": {
+    "title": "关于鼎纳",
+    "subtitle": "成立于 2008 年。总部位于美国加州圣何塞。"
+  }
+}
