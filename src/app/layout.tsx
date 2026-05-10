@@ -54,6 +54,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} font-sans`}>
+      <head>
+        <script dangerouslySetInnerHTML={{
+          __html: `(function(){if(window.location.hostname==='www.dinnar.us'){window.location.replace('https://dinnar.us'+window.location.pathname+window.location.search+window.location.hash)}})();`,
+        }} />
+      </head>
       <body className="bg-white text-navy-500 antialiased">
         <OrganizationSchema />
         {children}
