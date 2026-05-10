@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations, useLocale } from "next-intl";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 
 export function Footer() {
   const t = useTranslations("common");
@@ -11,9 +11,9 @@ export function Footer() {
     {
       title: { en: "Products", zh: "产品" },
       links: [
-        { en: "ACI-S1000", zh: "ACI-S1000", href: `/${locale}/products` },
-        { en: "Vision One", zh: "Vision One", href: `/${locale}/products` },
-        { en: "All Equipment", zh: "全部设备", href: `/${locale}/products` },
+        { en: "ACI-S1000", zh: "ACI-S1000", href: "/products/p-1098" },
+        { en: "Vision One", zh: "Vision One", href: "/products/p-1072" },
+        { en: "All Equipment", zh: "全部设备", href: "/products" },
       ],
     },
     {
