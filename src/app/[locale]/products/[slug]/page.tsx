@@ -101,6 +101,4 @@ export default async function ProductDetailPage({ params }: Props) {
   );
 }
 
-export function generateStaticParams() {
-  return products.map((p) => ({ slug: p.slug }));
-}
+export const dynamic = "force-dynamic";

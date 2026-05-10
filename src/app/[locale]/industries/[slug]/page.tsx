@@ -176,6 +176,4 @@ export default async function IndustryDetailPage({ params }: Props) {
   );
 }
 
-export function generateStaticParams() {
-  return ["electron", "energy", "semiconductor", "display", "other"].map((slug) => ({ slug }));
-}
+export const dynamic = "force-dynamic";
