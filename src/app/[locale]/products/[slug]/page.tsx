@@ -1,139 +1,106 @@
-"use client";
-import { use } from "react";
-import { useTranslations } from "next-intl";
-import { notFound } from "next/navigation";
-import { useRouter, Link } from "@/i18n/routing";
-import { SectionHeader } from "@/components/ui/SectionHeader";
-import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { products, productsBySlug } from "@/content/products";
-import { ArrowLeft, ArrowRight, Check } from "lucide-react";
+import { desensitize } from "@/lib/desensitize";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { ArrowLeft } from "lucide-react";
 
-type Props = { params: Promise<{ slug: string }> };
+type Props = { params: Promise<{ locale: string; slug: string }> };
 
-export default function ProductPage({ params }: Props) {
-  const { slug } = use(params);
-  const t = useTranslations("productsPage");
-  const tc = useTranslations("common");
-  const router = useRouter();
+const CATEGORY_NAMES: Record<string, { en: string; zh: string }> = {
+  inspection: { en: "Visual Inspection Equipment", zh: "视觉检测设备" },
+  measurement: { en: "Visual Measurement Equipment", zh: "视觉量测设备" },
+  function: { en: "Functional Test Equipment", zh: "功能检测设备" },
+  assembly: { en: "Smart Assembly Equipment", zh: "智能组装设备" },
+  intelligence: { en: "Smart Inspection Equipment", zh: "智能检测设备" },
+  software: { en: "Software", zh: "软件" },
+};
 
+export default async function ProductDetailPage({ params }: Props) {
+  const { locale, slug } = await params;
   const product = productsBySlug.get(slug);
   if (!product) notFound();
 
-  // Get related products (same category, exclude self)
-  const related = products
-    .filter((p) => p.slug !== slug && p.category === product.category)
-    .slice(0, 4);
-
-  const categoryLabels = t.raw("categories") as Record<string, string> | undefined;
+  const lang = (locale === "zh" ? "zh" : "en") as "en" | "zh";
+  const title = desensitize(product.title[lang]);
+  const summary = desensitize(product.summary[lang].slice(0, 300));
+  const catName = CATEGORY_NAMES[product.category]?.[lang] || product.category;
+  const headings = product.headings[lang] || [];
 
   return (
-    <>
-      {/* Hero */}
-      <section className="relative isolate pt-32 pb-16">
-        <div className="absolute inset-0 -z-10 bg-tech-grid" />
-        <div className="absolute inset-0 -z-10 bg-hero-spot" />
+    <div className="bg-white">
+      {/* Header */}
+      <section className="bg-navy-500 text-white py-16">
         <div className="container-page">
-          <button
-            onClick={() => router.push("/products")}
-            className="inline-flex items-center gap-1.5 text-sm text-white/55 hover:text-white mb-8 transition"
-          >
-            <ArrowLeft size={16} /> Products
-          </button>
-          <div className="max-w-4xl">
-            <p className="text-eyebrow mb-4">
-              {categoryLabels?.[product.category] ?? product.category}
-            </p>
-            <h1 className="text-display text-3xl md:text-5xl font-semibold text-white leading-[1.05]">
-              {product.title.en || product.title.zh}
-            </h1>
-            <p className="mt-6 text-base md:text-lg text-white/60 leading-relaxed max-w-3xl">
-              {product.summary.en || product.summary.zh}
-            </p>
+          <Link href={`/${locale}/products`} className="inline-flex items-center gap-2 text-gray-400 hover:text-white text-sm mb-6 transition-colors">
+            <ArrowLeft className="w-4 h-4" /> {lang === "zh" ? "返回产品列表" : "Back to products"}
+          </Link>
+          <div className="flex items-center gap-3 mb-4">
+            <span className="tag-accent bg-brand-500/20 text-brand-400 border border-brand-500/30">{catName}</span>
           </div>
+          <h1 className="text-3xl md:text-4xl font-bold">{title}</h1>
+          <p className="mt-4 text-gray-300 text-lg max-w-3xl leading-relaxed">{summary}</p>
         </div>
-        {product.image && (
-          <div className="container-page mt-10">
-            <div className="max-w-2xl rounded-2xl overflow-hidden ring-1 ring-white/10 bg-white/5">
-              <img
-                src={product.image}
-                alt={product.title.en || product.title.zh}
-                className="w-full object-contain"
-                style={{ maxHeight: '400px' }}
-              />
-            </div>
-          </div>
-        )}
       </section>
 
-      {/* Specs / Headings */}
-      <section className="container-page pb-16">
-        {product.headings.en.length > 0 || product.headings.zh.length > 0 ? (
-          <>
-            <RevealOnScroll>
-              <p className="text-eyebrow mb-6">{t("specs")}</p>
-            </RevealOnScroll>
-            <div className="grid gap-4 md:grid-cols-2 max-w-4xl">
-              {(product.headings.en.length > 0 ? product.headings.en : product.headings.zh)
-                .filter((h) => h && !h.includes("咨询"))
-                .map((h, idx) => (
-                  <RevealOnScroll key={`${h}-${idx}`} delay={idx * 0.05}>
-                    <div className="card-surface flex items-start gap-3 p-5 transition hover:border-white/10">
-                      <Check size={16} className="mt-0.5 text-accent-300 flex-shrink-0" />
-                      <span className="text-sm text-white/65">{h}</span>
+      {/* Specs */}
+      <section className="container-page py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+          {/* Product image */}
+          <div className="lg:col-span-1">
+            <div className="card-white overflow-hidden aspect-square bg-gray-100">
+              {product.image ? (
+                <img src={product.image} alt={title} className="w-full h-full object-contain" />
+              ) : (
+                <span className="text-7xl text-gray-300 flex items-center justify-center h-full">🏭</span>
+              )}
+            </div>
+          </div>
+
+          {/* Specs list */}
+          <div className="lg:col-span-2">
+            <h2 className="text-2xl font-bold text-navy-500 mb-6">
+              {lang === "zh" ? "规格参数" : "Specifications"}
+            </h2>
+            {headings.length > 0 ? (
+              <div className="space-y-4">
+                {headings.map((h, i) => (
+                  <div key={i} className="card-white p-5 flex items-start gap-4">
+                    <div className="w-8 h-8 rounded-lg bg-brand-50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <span className="text-sm font-bold text-brand-500">{String(i + 1).padStart(2, "0")}</span>
                     </div>
-                  </RevealOnScroll>
+                    <div>
+                      <h3 className="text-sm font-semibold text-navy-500">{desensitize(h)}</h3>
+                    </div>
+                  </div>
                 ))}
-            </div>
-          </>
-        ) : null}
-      </section>
-
-      {/* Category badge & Industries */}
-      <section className="container-page pb-8">
-        <div className="flex flex-wrap items-center gap-3 mb-8">
-          <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs font-mono uppercase tracking-wider text-accent-300">
-            {product.category}
-          </span>
-          {product.industries.map((ind) => (
-            <Link
-              key={ind}
-              href={`/industries/${ind}`}
-              className="rounded-full border border-white/5 px-3 py-1 text-xs text-white/50 hover:text-white/80 hover:border-white/15 transition"
-            >
-              {ind}
-            </Link>
-          ))}
+              </div>
+            ) : (
+              <p className="text-gray-500">
+                {lang === "zh" ? "请联系我们获取详细规格参数。" : "Please contact us for detailed specifications."}
+              </p>
+            )}
+          </div>
         </div>
       </section>
 
-      {/* Related Products */}
-      {related.length > 0 ? (
-        <section className="border-t border-white/5 py-16">
-          <div className="container-page">
-            <p className="text-eyebrow mb-8">{t("related")}</p>
-            <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-4">
-              {related.map((rp, idx) => (
-                <RevealOnScroll key={rp.slug} delay={idx * 0.06}>
-                  <Link
-                    href={`/products/${rp.slug}`}
-                    className="card-surface block p-5 transition hover:border-white/15 group"
-                  >
-                    <p className="text-xs font-mono uppercase tracking-wider text-accent-400/70 mb-2">
-                      {rp.category}
-                    </p>
-                    <h3 className="text-display text-sm font-semibold text-white">
-                      {rp.title.en || rp.title.zh}
-                    </h3>
-                    <div className="mt-3 inline-flex items-center gap-1 text-xs text-accent-300 group-hover:translate-x-0.5 transition-transform">
-                      View <ArrowRight size={12} />
-                    </div>
-                  </Link>
-                </RevealOnScroll>
-              ))}
-            </div>
-          </div>
-        </section>
-      ) : null}
-    </>
+      {/* CTA */}
+      <section className="bg-brand-500 text-white py-16">
+        <div className="container-page text-center">
+          <h2 className="text-2xl md:text-3xl font-bold">
+            {lang === "zh" ? "对该产品感兴趣？" : "Interested in this product?"}
+          </h2>
+          <p className="mt-3 text-white/80 text-lg">
+            {lang === "zh" ? "联系我们的工程团队，获取详细报价和技术方案。" : "Contact our engineering team for pricing and technical details."}
+          </p>
+          <Link href={`/${locale}/about`} className="btn-white mt-6 inline-flex">
+            {lang === "zh" ? "联系我们" : "Contact us"}
+          </Link>
+        </div>
+      </section>
+    </div>
   );
+}
+
+export function generateStaticParams() {
+  return products.map((p) => ({ slug: p.slug }));
 }

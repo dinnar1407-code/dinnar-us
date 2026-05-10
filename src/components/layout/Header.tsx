@@ -1,116 +1,121 @@
 "use client";
-import { useEffect, useState } from "react";
-import { useLocale, useTranslations } from "next-intl";
-import { Link, usePathname } from "@/i18n/routing";
-import { Menu, X, Globe } from "lucide-react";
-import { cn } from "@/lib/utils";
+
+import { useTranslations } from "next-intl";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
+import { useState } from "react";
+import { Menu, X, ChevronDown } from "lucide-react";
 
 const navItems = [
-  { href: "/", key: "home" },
-  { href: "/industries", key: "industries" },
-  { href: "/products", key: "products" },
-  { href: "/technology", key: "technology" },
-  { href: "/about", key: "about" },
-] as const;
+  { key: "home", href: "/" },
+  { key: "industries", href: "/industries" },
+  { key: "products", href: "/products" },
+  { key: "technology", href: "/technology" },
+  { key: "about", href: "/about" },
+];
 
 export function Header() {
   const t = useTranslations("nav");
   const tc = useTranslations("common");
-  const locale = useLocale();
   const pathname = usePathname();
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const currentLocale = pathname.startsWith("/zh") ? "zh" : "en";
+  const otherLocale = currentLocale === "zh" ? "en" : "zh";
+  const otherPath = pathname.replace(/^\/(zh|en)/, `/${otherLocale}`);
 
-  const otherLocale = locale === "en" ? "zh" : "en";
+  function isActive(href: string) {
+    const p = `/${currentLocale}${href === "/" ? "" : href}`;
+    if (href === "/") return pathname === p || pathname === `/${currentLocale}`;
+    return pathname.startsWith(p);
+  }
+
+  function getHref(itemHref: string) {
+    return itemHref === "/" ? `/${currentLocale}` : `/${currentLocale}${itemHref}`;
+  }
 
   return (
-    <header
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-        scrolled
-          ? "backdrop-blur-md bg-ink-950/70 border-b border-white/5"
-          : "bg-transparent",
-      )}
-    >
-      <div className="container-page flex h-16 items-center justify-between">
-        <Link href="/" className="flex items-center gap-2.5">
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+      <div className="container-page flex items-center justify-between h-16 md:h-18">
+        {/* Logo */}
+        <Link href={`/${currentLocale}`} className="flex items-center gap-2 flex-shrink-0">
           <img src="/images/logo.png" alt="Dinnar" className="h-8 w-auto" />
-          <span className="text-display text-base font-semibold tracking-tight">
-            Dinnar
-          </span>
         </Link>
 
+        {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-1">
           {navItems.map((item) => (
             <Link
               key={item.key}
-              href={item.href}
-              className={cn(
-                "rounded-full px-4 py-2 text-sm transition",
-                pathname === item.href
-                  ? "text-white bg-white/10"
-                  : "text-white/65 hover:text-white hover:bg-white/5",
-              )}
+              href={getHref(item.href)}
+              className={`px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
+                isActive(item.href)
+                  ? "text-brand-500 bg-brand-50"
+                  : "text-gray-600 hover:text-navy-500 hover:bg-gray-50"
+              }`}
             >
               {t(item.key)}
             </Link>
           ))}
         </nav>
 
-        <div className="hidden md:flex items-center gap-2">
+        {/* Right side */}
+        <div className="flex items-center gap-3">
+          {/* Lang switcher */}
           <Link
-            href={pathname}
-            locale={otherLocale}
-            className="inline-flex items-center gap-1.5 rounded-full border border-white/10 px-3 py-1.5 text-xs font-mono uppercase tracking-wider text-white/70 hover:text-white hover:border-white/20"
+            href={otherPath}
+            className="text-xs font-medium text-gray-400 hover:text-brand-500 transition-colors uppercase"
           >
-            <Globe size={14} />
-            {otherLocale === "en" ? "EN" : "中"}
+            {otherLocale}
           </Link>
-          <Link href="/#contact" className="btn-primary">
+
+          {/* Contact CTA */}
+          <Link
+            href={`/${currentLocale}/about`}
+            className="hidden md:inline-flex items-center gap-1.5 rounded-lg bg-brand-500 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-600 transition-colors"
+          >
             {tc("contactUs")}
           </Link>
-        </div>
 
-        <button
-          aria-label="menu"
-          className="md:hidden rounded-md p-2 text-white/80"
-          onClick={() => setOpen((v) => !v)}
-        >
-          {open ? <X size={20} /> : <Menu size={20} />}
-        </button>
+          {/* Mobile menu button */}
+          <button
+            onClick={() => setOpen(!open)}
+            className="md:hidden p-2 text-gray-600 hover:text-navy-500"
+            aria-label={tc("menu")}
+          >
+            {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
       </div>
 
-      {open ? (
-        <div className="md:hidden border-t border-white/5 bg-ink-950/95 backdrop-blur">
-          <div className="container-page py-4 flex flex-col gap-1">
+      {/* Mobile nav */}
+      {open && (
+        <div className="md:hidden border-t border-gray-100 bg-white">
+          <nav className="container-page py-4 flex flex-col gap-1">
             {navItems.map((item) => (
               <Link
                 key={item.key}
-                href={item.href}
+                href={getHref(item.href)}
                 onClick={() => setOpen(false)}
-                className="rounded-lg px-3 py-2 text-base text-white/80 hover:bg-white/5"
+                className={`px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
+                  isActive(item.href)
+                    ? "text-brand-500 bg-brand-50"
+                    : "text-gray-600 hover:text-navy-500 hover:bg-gray-50"
+                }`}
               >
                 {t(item.key)}
               </Link>
             ))}
             <Link
-              href={pathname}
-              locale={otherLocale}
+              href={`/${currentLocale}/about`}
               onClick={() => setOpen(false)}
-              className="rounded-lg px-3 py-2 text-sm font-mono uppercase tracking-wider text-accent-300 hover:bg-white/5"
+              className="mt-2 text-center rounded-lg bg-brand-500 px-4 py-3 text-sm font-semibold text-white hover:bg-brand-600 transition-colors"
             >
-              {otherLocale === "en" ? "Switch to English" : "切换到中文"}
+              {tc("contactUs")}
             </Link>
-          </div>
+          </nav>
         </div>
-      ) : null}
+      )}
     </header>
   );
 }

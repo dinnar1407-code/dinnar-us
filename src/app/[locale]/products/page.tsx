@@ -1,129 +1,87 @@
-"use client";
-import { useSearchParams } from "next/navigation";
-import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/routing";
-import { ArrowLeft, ArrowRight } from "lucide-react";
-import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
-import { products, type Product } from "@/content/products";
+import { products } from "@/content/products";
+import Link from "next/link";
 
-const categoryI18nKeys = {
-  inspection: "inspection",
-  measurement: "measurement",
-  function: "function",
-  assembly: "assembly",
-  intelligence: "intelligence",
-  software: "software",
-} as const;
+type Props = { params: Promise<{ locale: string }> };
 
-type CategoryKey = keyof typeof categoryI18nKeys;
+const CATEGORY_NAMES: Record<string, { en: string; zh: string }> = {
+  inspection: { en: "Visual Inspection", zh: "视觉检测" },
+  measurement: { en: "Visual Measurement", zh: "视觉量测" },
+  function: { en: "Functional Test", zh: "功能检测" },
+  assembly: { en: "Smart Assembly", zh: "智能组装" },
+  intelligence: { en: "Smart Inspection", zh: "智能检测" },
+  software: { en: "Software", zh: "软件" },
+};
 
-function ProductCard({ product }: { product: Product }) {
-  return (
-    <Link
-      href={`/products/${product.slug}`}
-      className="card-surface block overflow-hidden transition hover:border-white/15 group"
-    >
-      <div className="aspect-[4/3] w-full overflow-hidden bg-gradient-to-br from-white/10 to-white/5 flex items-center justify-center">
-        <img
-          src={product.image}
-          alt={product.title.en || product.title.zh}
-          className="max-h-full max-w-full object-contain"
-          loading="lazy"
-        />
-      </div>
-      <div className="p-5">
-        <p className="text-xs font-mono uppercase tracking-wider text-accent-400/70 mb-2">
-          {product.category}
-        </p>
-        <h3 className="text-display text-base font-semibold text-white leading-snug">
-          {product.title.en || product.title.zh}
-        </h3>
-        <div className="mt-4 inline-flex items-center gap-1.5 text-sm text-accent-300 group-hover:translate-x-0.5 transition-transform">
-          View <ArrowRight size={14} />
-        </div>
-      </div>
-    </Link>
-  );
-}
+export default async function ProductsPage({ params }: Props) {
+  const { locale } = await params;
+  const lang = (locale === "zh" ? "zh" : "en") as "en" | "zh";
 
-export default function ProductsPage() {
-  const t = useTranslations("products");
-  const tp = useTranslations("productsPage");
-  const searchParams = useSearchParams();
-  const activeCategory = searchParams.get("category") as CategoryKey | null;
+  const grouped = new Map<string, typeof products>();
+  for (const p of products) {
+    const list = grouped.get(p.category) || [];
+    list.push(p);
+    grouped.set(p.category, list);
+  }
 
-  const filtered = activeCategory
-    ? products.filter((p) => p.category === activeCategory)
-    : products;
-
-  const categories = [
-    "inspection", "measurement", "function", "assembly", "intelligence", "software"
-  ] as const;
+  const categoryOrder = ["inspection", "measurement", "function", "assembly", "intelligence", "software"];
 
   return (
-    <>
-      <section className="relative isolate pt-32 pb-8">
-        <div className="absolute inset-0 -z-10 bg-tech-grid" />
-        <div className="absolute inset-0 -z-10 bg-hero-spot" />
+    <div className="bg-white">
+      {/* Hero */}
+      <section className="bg-navy-500 text-white py-20">
         <div className="container-page">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-1.5 text-sm text-white/55 hover:text-white mb-8 transition"
-          >
-            <ArrowLeft size={16} /> Home
-          </Link>
-          <div className="mb-10">
-            <h1 className="text-display text-3xl md:text-5xl font-semibold text-white leading-[1.05]">
-              {tp("title")}
-            </h1>
-            <p className="mt-4 text-base md:text-lg text-white/55 max-w-2xl">
-              {tp("subtitle")}
-            </p>
-          </div>
+          <span className="tag-accent bg-brand-500/20 text-brand-400 border border-brand-500/30 mb-4 inline-block">Products</span>
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold">
+            {lang === "zh" ? "产品中心" : "Product Catalog"}
+          </h1>
+          <p className="mt-4 text-gray-300 text-lg max-w-2xl">
+            {lang === "zh"
+              ? "ACI-S1000 + Vision One 统一平台，覆盖检测、量测、功能测试、智能组装全场景。"
+              : "ACI-S1000 + Vision One unified platform covering inspection, measurement, functional testing, and smart assembly."}
+          </p>
         </div>
       </section>
 
-      <section className="container-page pb-24">
-        {/* Category filter */}
-        <div className="mb-10 flex flex-wrap gap-2">
-          <Link
-            href="/products"
-            className={`rounded-full border px-4 py-2 text-sm transition ${
-              !activeCategory
-                ? "border-accent-400/50 bg-accent-400/10 text-accent-300"
-                : "border-white/10 text-white/55 hover:text-white hover:border-white/20"
-            }`}
-          >
-            All
-          </Link>
-          {categories.map((cat) => (
-            <Link
-              key={cat}
-              href={{ pathname: "/products", query: { category: cat } }}
-              className={`rounded-full border px-4 py-2 text-sm transition ${
-                activeCategory === cat
-                  ? "border-accent-400/50 bg-accent-400/10 text-accent-300"
-                  : "border-white/10 text-white/55 hover:text-white hover:border-white/20"
-              }`}
-            >
-              {t(`categories.${cat}` as "categories.inspection")}
-            </Link>
-          ))}
-        </div>
-
-        {/* Product grid */}
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((p, idx) => (
-            <RevealOnScroll key={p.slug} delay={idx * 0.03}>
-              <ProductCard product={p} />
-            </RevealOnScroll>
-          ))}
-        </div>
-
-        {filtered.length === 0 ? (
-          <p className="text-center text-white/40 py-16">No products found in this category.</p>
-        ) : null}
-      </section>
-    </>
+      {/* Category sections */}
+      <div className="container-page py-16">
+        {categoryOrder.map((cat) => {
+          const items = grouped.get(cat);
+          if (!items || items.length === 0) return null;
+          return (
+            <section key={cat} className="mb-16 last:mb-0">
+              <div className="flex items-center gap-3 mb-8">
+                <h2 className="text-2xl font-bold text-navy-500">{CATEGORY_NAMES[cat]?.[lang] || cat}</h2>
+                <div className="flex-1 h-px bg-gray-200" />
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+                {items.map((p) => (
+                  <Link
+                    key={p.slug}
+                    href={`/${locale}/products/${p.slug}`}
+                    className="card-white overflow-hidden group"
+                  >
+                    <div className="aspect-[4/3] bg-gray-100 flex items-center justify-center overflow-hidden">
+                      {p.image ? (
+                        <img src={p.image} alt={p.title[lang]} className="w-full h-full object-cover" loading="lazy" />
+                      ) : (
+                        <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-100 flex items-center justify-center text-6xl">🏭</div>
+                      )}
+                    </div>
+                    <div className="p-5">
+                      <h3 className="text-sm font-semibold text-navy-500 group-hover:text-brand-500 transition-colors line-clamp-2">
+                        {p.title[lang]}
+                      </h3>
+                      <p className="mt-2 text-xs text-gray-400 line-clamp-2">
+                        {p.summary[lang].slice(0, 100)}
+                      </p>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          );
+        })}
+      </div>
+    </div>
   );
 }

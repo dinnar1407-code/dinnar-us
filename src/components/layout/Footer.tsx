@@ -1,56 +1,92 @@
-import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/routing";
+"use client";
+
+import { useTranslations, useLocale } from "next-intl";
+import Link from "next/link";
 
 export function Footer() {
-  const tc = useTranslations("common");
-  const tn = useTranslations("nav");
-  const year = new Date().getFullYear();
+  const t = useTranslations("common");
+  const locale = useLocale();
+
+  const navColumns = [
+    {
+      title: { en: "Products", zh: "产品" },
+      links: [
+        { en: "ACI-S1000", zh: "ACI-S1000", href: `/${locale}/products` },
+        { en: "Vision One", zh: "Vision One", href: `/${locale}/products` },
+        { en: "All Equipment", zh: "全部设备", href: `/${locale}/products` },
+      ],
+    },
+    {
+      title: { en: "Industries", zh: "行业" },
+      links: [
+        { en: "3C Electronics", zh: "3C电子", href: `/${locale}/industries/electron` },
+        { en: "New Energy", zh: "新能源", href: `/${locale}/industries/energy` },
+        { en: "Semiconductor", zh: "半导体", href: `/${locale}/industries/semiconductor` },
+        { en: "Display", zh: "显示面板", href: `/${locale}/industries/display` },
+      ],
+    },
+    {
+      title: { en: "Company", zh: "公司" },
+      links: [
+        { en: "About", zh: "关于我们", href: `/${locale}/about` },
+        { en: "Technology", zh: "技术", href: `/${locale}/technology` },
+        { en: "Contact", zh: "联系我们", href: `/${locale}/about` },
+      ],
+    },
+  ];
+
+  const lang = (locale === "zh" ? "zh" : "en") as "en" | "zh";
+
   return (
-    <footer className="mt-32 border-t border-white/5 bg-ink-950">
-      <div className="container-page py-16 grid gap-12 md:grid-cols-4">
-        <div className="md:col-span-2">
-          <div className="flex items-center gap-2.5">
-            <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-accent-300 to-signal-500 text-ink-950 font-display font-bold">
-              D
-            </span>
-            <span className="text-display text-lg font-semibold tracking-tight">
-              Dinnar
-            </span>
+    <footer className="bg-navy-500 text-white">
+      {/* Top */}
+      <div className="container-page py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+          {/* Brand */}
+          <div className="lg:col-span-2">
+            <Link href={`/${locale}`} className="text-2xl font-bold text-brand-400">
+              {t("shortName")}
+            </Link>
+            <p className="mt-3 text-gray-400 text-sm leading-relaxed max-w-sm">
+              {t("footer.tagline")}
+            </p>
+            <div className="mt-6 space-y-1 text-sm text-gray-400">
+              <p>{t("footer.address")}</p>
+              <p>{t("footer.email")}</p>
+            </div>
           </div>
-          <p className="mt-4 max-w-md text-sm text-white/55 leading-relaxed">
-            {tc("footer.tagline")}
-          </p>
-          <p className="mt-6 text-xs font-mono uppercase tracking-wider text-white/40">
-            {tc("company")}
-          </p>
-          <p className="mt-1 text-xs text-white/40">{tc("footer.address")}</p>
-          <p className="mt-1 text-xs text-white/40">{tc("footer.email")}</p>
+
+          {/* Nav columns */}
+          {navColumns.map((col) => (
+            <div key={col.title.en}>
+              <h4 className="text-sm font-semibold text-white mb-4">{col.title[lang]}</h4>
+              <ul className="space-y-2.5">
+                {col.links.map((link) => (
+                  <li key={link.en}>
+                    <Link
+                      href={link.href}
+                      className="text-sm text-gray-400 hover:text-brand-400 transition-colors"
+                    >
+                      {link[lang]}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
-
-        <nav className="text-sm">
-          <p className="text-eyebrow mb-3">Site</p>
-          <ul className="space-y-2">
-            {["industries", "products", "technology", "about"].map((k) => (
-              <li key={k}>
-                <Link href={`/${k}`} className="text-white/65 hover:text-white">
-                  {tn(k as "industries" | "products" | "technology" | "about")}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        <nav className="text-sm">
-          <p className="text-eyebrow mb-3">Contact</p>
-          <ul className="space-y-2 text-white/65">
-            <li>{tc("footer.email")}</li>
-            <li>{tc("city")}</li>
-          </ul>
-        </nav>
       </div>
-      <div className="container-page border-t border-white/5 py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-2 text-xs text-white/40">
-        <p>© {year} {tc("company")}. {tc("footer.rights")}</p>
-        <p className="font-mono uppercase tracking-wider">DNAI · Lights-Out Platform</p>
+
+      {/* Bottom bar */}
+      <div className="border-t border-white/10">
+        <div className="container-page py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-gray-500">
+            © {new Date().getFullYear()} {t("company")}. {t("footer.rights")}
+          </p>
+          <div className="flex items-center gap-6 text-xs text-gray-500">
+            <span>Dinnar Automatic Intelligence Inc., San Jose, CA</span>
+          </div>
+        </div>
       </div>
     </footer>
   );
