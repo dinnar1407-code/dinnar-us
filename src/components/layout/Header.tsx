@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 
@@ -22,7 +22,9 @@ export function Header() {
 
   const currentLocale = pathname.startsWith("/zh") ? "zh" : "en";
   const otherLocale = currentLocale === "zh" ? "en" : "zh";
-  const otherPath = pathname.replace(/^\/(zh|en)/, `/${otherLocale}`);
+  const otherPath = currentLocale === "zh"
+    ? pathname.replace(/^\/zh/, "") || "/"
+    : `/zh${pathname}`;
 
   function isActive(href: string) {
     const p = `/${currentLocale}${href === "/" ? "" : href}`;
