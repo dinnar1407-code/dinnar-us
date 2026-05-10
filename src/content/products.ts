@@ -50,7 +50,7 @@ export const products: Product[] = [
         "应用案例"
       ]
     },
-    "image": "/images/screenshots/industry_semiconductor.png"
+    "image": "/images/inspection_html_images_1696819276.png"
   },
   {
     "slug": "p-527",
@@ -1384,7 +1384,7 @@ export const products: Product[] = [
         "检测系统"
       ]
     },
-    "image": "/images/screenshots/industry_electron.png"
+    "image": "/images/detection-img01.png"
   },
   {
     "slug": "p-616",
@@ -1422,7 +1422,7 @@ export const products: Product[] = [
         "检测系统"
       ]
     },
-    "image": "/images/screenshots/industry_energy.png"
+    "image": "/images/detection-img02.png"
   },
   {
     "slug": "p-766",
@@ -1460,7 +1460,7 @@ export const products: Product[] = [
         "检测系统"
       ]
     },
-    "image": "/images/screenshots/product_watch_backcover.png"
+    "image": "/images/detection-img03.png"
   },
   {
     "slug": "p-1072",
@@ -1484,7 +1484,7 @@ export const products: Product[] = [
         "咨询 获取资源"
       ]
     },
-    "image": "/images/screenshots/product_aci_s1000.png"
+    "image": "/images/detection-img04.png"
   }
 ];
 
