@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import { Link } from "@/i18n/routing";
 import { NodeNetwork } from "@/components/ui/NodeNetwork";
 import { ScrollAnimations } from "@/components/ui/ScrollAnimations";
+import { ContactForm } from "@/components/ui/ContactForm";
 
 const HeroClient = dynamic(() => import("./HeroClient"), { ssr: false });
 
@@ -307,9 +308,43 @@ function ProductsSection() {
 function OMESection() {
   const t = useTranslations("ome");
   const items = [
-    { key: "optics", icon: "🔬", title: t("optics.title"), body: t("optics.body") },
-    { key: "mechanics", icon: "⚡", title: t("mechanics.title"), body: t("mechanics.body") },
-    { key: "electronics", icon: "💻", title: t("electronics.title"), body: t("electronics.body") },
+    {
+      key: "optics", title: t("optics.title"), body: t("optics.body"),
+      icon: (
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <ellipse cx="20" cy="20" rx="9" ry="13" />
+          <ellipse cx="20" cy="20" rx="3.5" ry="5.5" />
+          <line x1="3" y1="17" x2="11" y2="17" /><line x1="3" y1="20" x2="11" y2="20" /><line x1="3" y1="23" x2="11" y2="23" />
+          <line x1="29" y1="17" x2="35" y2="20" /><line x1="29" y1="20" x2="37" y2="20" /><line x1="29" y1="23" x2="35" y2="20" />
+        </svg>
+      ),
+    },
+    {
+      key: "mechanics", title: t("mechanics.title"), body: t("mechanics.body"),
+      icon: (
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="5" y="24" width="30" height="6" rx="1.5" />
+          <rect x="9" y="17" width="22" height="7" rx="1" />
+          <rect x="17" y="10" width="6" height="7" rx="1" />
+          <line x1="7" y1="24" x2="7" y2="17" /><line x1="33" y1="24" x2="33" y2="17" />
+          <line x1="14" y1="30" x2="14" y2="28" /><line x1="20" y1="30" x2="20" y2="27" /><line x1="26" y1="30" x2="26" y2="28" />
+          <line x1="14" y1="17" x2="14" y2="12" /><line x1="26" y1="17" x2="26" y2="12" />
+        </svg>
+      ),
+    },
+    {
+      key: "electronics", title: t("electronics.title"), body: t("electronics.body"),
+      icon: (
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="5" y="5" width="30" height="30" rx="2" />
+          <rect x="13" y="13" width="14" height="14" rx="1.5" />
+          <line x1="5" y1="11" x2="13" y2="11" /><line x1="5" y1="20" x2="13" y2="20" /><line x1="5" y1="29" x2="13" y2="29" />
+          <line x1="27" y1="11" x2="35" y2="11" /><line x1="27" y1="20" x2="35" y2="20" /><line x1="27" y1="29" x2="35" y2="29" />
+          <line x1="11" y1="5" x2="11" y2="13" /><line x1="20" y1="5" x2="20" y2="13" /><line x1="29" y1="5" x2="29" y2="13" />
+          <line x1="11" y1="27" x2="11" y2="35" /><line x1="20" y1="27" x2="20" y2="35" /><line x1="29" y1="27" x2="29" y2="35" />
+        </svg>
+      ),
+    },
   ];
 
   return (
@@ -329,7 +364,9 @@ function OMESection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {items.map((item) => (
             <div key={item.key} className="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10 hover:border-brand-500/30 transition-all group">
-              <div className="text-4xl mb-4">{item.icon}</div>
+              <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mb-4 text-brand-400 group-hover:bg-white/20 transition-colors">
+                <span className="w-7 h-7 [&>svg]:w-full [&>svg]:h-full [&>svg]:block">{item.icon}</span>
+              </div>
               <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
               <p className="text-sm text-gray-400 leading-relaxed">{item.body}</p>
             </div>
@@ -424,15 +461,17 @@ function ContactSection() {
           <div className="accent-line bg-white" />
         </div>
 
-        <form className="max-w-xl mx-auto space-y-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <input type="text" placeholder={t("name")} className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-white/50 text-sm" />
-            <input type="email" placeholder={t("email")} className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-white/50 text-sm" />
-          </div>
-          <input type="text" placeholder={t("company")} className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-white/50 text-sm" />
-          <textarea rows={4} placeholder={t("message")} className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-white/50 text-sm resize-none" />
-          <button type="submit" className="btn-white w-full py-3.5 font-semibold text-brand-600">{t("submit")}</button>
-        </form>
+        <ContactForm
+          labels={{
+            name: t("name"),
+            email: t("email"),
+            company: t("company"),
+            message: t("message"),
+            submit: t("submit"),
+            successTitle: t("successTitle"),
+            successBody: t("successBody"),
+          }}
+        />
       </div>
     </section>
   );

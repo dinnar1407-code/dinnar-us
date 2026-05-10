@@ -50,7 +50,7 @@ export const products: Product[] = [
         "应用案例"
       ]
     },
-    "image": "/images/1697606262.png"
+    "image": "/images/inspection_html_images_1696819276.png"
   },
   {
     "slug": "p-527",
@@ -88,7 +88,7 @@ export const products: Product[] = [
         "检测系统"
       ]
     },
-    "image": "/images/screenshots/industry_electron.png"
+    "image": "/images/inspection_html_images_1696819291.png"
   },
   {
     "slug": "p-589",
@@ -126,7 +126,7 @@ export const products: Product[] = [
         "相机"
       ]
     },
-    "image": "/images/1697607435.png"
+    "image": "/images/inspection_html_images_1696819980.png"
   },
   {
     "slug": "p-602",
@@ -164,7 +164,7 @@ export const products: Product[] = [
         "检测系统"
       ]
     },
-    "image": "/images/1697607488.png"
+    "image": "/images/inspection_html_images_1696819996.png"
   },
   {
     "slug": "p-631",
@@ -202,7 +202,7 @@ export const products: Product[] = [
         "检测系统"
       ]
     },
-    "image": "/images/1697607579.png"
+    "image": "/images/inspection_html_images_1696820013.png"
   },
   {
     "slug": "p-644",
@@ -240,7 +240,7 @@ export const products: Product[] = [
         "检测系统"
       ]
     },
-    "image": "/images/1697607654.png"
+    "image": "/images/inspection_html_images_1696820029.png"
   },
   {
     "slug": "p-657",
@@ -278,7 +278,7 @@ export const products: Product[] = [
         "检测系统"
       ]
     },
-    "image": "/images/1697607676.png"
+    "image": "/images/inspection_html_images_1696820044.png"
   },
   {
     "slug": "p-671",
@@ -316,7 +316,7 @@ export const products: Product[] = [
         "咨询 获取资源"
       ]
     },
-    "image": "/images/1697607705.png"
+    "image": "/images/inspection_html_images_1696820071.png"
   },
   {
     "slug": "p-741",
@@ -354,7 +354,7 @@ export const products: Product[] = [
         "检测系统"
       ]
     },
-    "image": "/images/1697607738.png"
+    "image": "/images/inspection_html_images_1696820888.png"
   },
   {
     "slug": "p-754",
@@ -392,7 +392,7 @@ export const products: Product[] = [
         "检测系统"
       ]
     },
-    "image": "/images/1697607770.png"
+    "image": "/images/inspection_html_images_1696821026.png"
   },
   {
     "slug": "p-778",
@@ -431,7 +431,7 @@ export const products: Product[] = [
         "检测系统"
       ]
     },
-    "image": "/images/1697607942.png"
+    "image": "/images/inspection_html_images_1696821037.png"
   },
   {
     "slug": "p-790",
@@ -470,7 +470,7 @@ export const products: Product[] = [
         "检测系统"
       ]
     },
-    "image": "/images/1697608065.png"
+    "image": "/images/inspection_html_images_1696821384.png"
   },
   {
     "slug": "p-803",
@@ -508,7 +508,7 @@ export const products: Product[] = [
         "检测系统"
       ]
     },
-    "image": "/images/1697608111.png"
+    "image": "/images/inspection_html_images_1696821394.png"
   },
   {
     "slug": "p-843",
@@ -546,7 +546,7 @@ export const products: Product[] = [
         "检测系统"
       ]
     },
-    "image": "/images/1697608161.png"
+    "image": "/images/inspection_html_images_1696821470.png"
   },
   {
     "slug": "p-844",
@@ -584,7 +584,7 @@ export const products: Product[] = [
         "检测系统"
       ]
     },
-    "image": "/images/1697608210.png"
+    "image": "/images/inspection_html_images_1696821868.png"
   },
   {
     "slug": "p-870",
@@ -622,7 +622,7 @@ export const products: Product[] = [
         "检测系统"
       ]
     },
-    "image": "/images/1697608238.png"
+    "image": "/images/inspection_html_images_1696821909.png"
   },
   {
     "slug": "p-909",
@@ -662,7 +662,7 @@ export const products: Product[] = [
         "检测系统"
       ]
     },
-    "image": "/images/1697608268.png"
+    "image": "/images/inspection_html_images_1696822116.png"
   },
   {
     "slug": "p-933",
@@ -700,7 +700,7 @@ export const products: Product[] = [
         "咨询 获取资源"
       ]
     },
-    "image": "/images/1697608302.png"
+    "image": "/images/inspection_html_images_1696822126.png"
   },
   {
     "slug": "p-953",
@@ -738,7 +738,7 @@ export const products: Product[] = [
         "检测系统"
       ]
     },
-    "image": "/images/1697608335.png"
+    "image": "/images/inspection_html_images_1697611055.png"
   },
   {
     "slug": "p-965",
@@ -776,7 +776,7 @@ export const products: Product[] = [
         "检测系统"
       ]
     },
-    "image": "/images/1697608375.png"
+    "image": "/images/inspection_html_images_1698799648.png"
   },
   {
     "slug": "p-1098",
@@ -815,7 +815,7 @@ export const products: Product[] = [
         "应用案例"
       ]
     },
-    "image": "/images/screenshots/product_aci_s1000.png"
+    "image": "/images/inspection_html_images_1718956855.png"
   },
   {
     "slug": "p-490",
@@ -855,7 +855,7 @@ export const products: Product[] = [
         "检测类型"
       ]
     },
-    "image": "/images/screenshots/product_watch_light.png"
+    "image": "/images/function_html_images_1696820138.png"
   },
   {
     "slug": "p-683",
@@ -895,7 +895,7 @@ export const products: Product[] = [
         "应用案例"
       ]
     },
-    "image": "/images/1697608521.png"
+    "image": "/images/function_html_images_1696820825.png"
   },
   {
     "slug": "p-695",
@@ -933,7 +933,7 @@ export const products: Product[] = [
         "咨询 获取资源"
       ]
     },
-    "image": "/images/1697609135.png"
+    "image": "/images/function_html_images_1696820843.png"
   },
   {
     "slug": "p-706",
@@ -971,7 +971,7 @@ export const products: Product[] = [
         "应用案例"
       ]
     },
-    "image": "/images/1697609161.png"
+    "image": "/images/function_html_images_1696821429.png"
   },
   {
     "slug": "p-718",
@@ -1009,7 +1009,7 @@ export const products: Product[] = [
         "咨询 获取资源"
       ]
     },
-    "image": "/images/1697609278.png"
+    "image": "/images/function_html_images_1697605782.png"
   },
   {
     "slug": "p-910",
@@ -1047,7 +1047,7 @@ export const products: Product[] = [
         "应用案例"
       ]
     },
-    "image": "/images/1697609302.png"
+    "image": "/images/function_html_images_1697610175.png"
   },
   {
     "slug": "p-549",
@@ -1085,7 +1085,7 @@ export const products: Product[] = [
         "应用案例"
       ]
     },
-    "image": "/images/1697609352.png"
+    "image": "/images/intelligence_html_images_1698800132.png"
   },
   {
     "slug": "p-817",
@@ -1123,7 +1123,7 @@ export const products: Product[] = [
         "检测系统"
       ]
     },
-    "image": "/images/1697609390.png"
+    "image": "/images/intelligence_html_images_1699497687.png"
   },
   {
     "slug": "p-830",
@@ -1161,7 +1161,7 @@ export const products: Product[] = [
         "检测系统"
       ]
     },
-    "image": "/images/1697609539.png"
+    "image": "/images/intelligence_html_images_1699497802.png"
   },
   {
     "slug": "p-845",
@@ -1199,7 +1199,7 @@ export const products: Product[] = [
         "应用案例"
       ]
     },
-    "image": "/images/screenshots/industry_semiconductor.png"
+    "image": "/images/intelligence_html_images_1699498181.png"
   },
   {
     "slug": "p-859",
@@ -1237,7 +1237,7 @@ export const products: Product[] = [
         "咨询 获取资源"
       ]
     },
-    "image": "/images/1697609634.png"
+    "image": "/images/intelligence_html_images_1699498244.png"
   },
   {
     "slug": "p-923",
@@ -1273,7 +1273,7 @@ export const products: Product[] = [
         "咨询 获取资源"
       ]
     },
-    "image": "/images/1697609674.png"
+    "image": "/images/intelligence_html_images_1698800132.png"
   },
   {
     "slug": "p-945",
@@ -1307,7 +1307,7 @@ export const products: Product[] = [
         "咨询 获取资源"
       ]
     },
-    "image": "/images/1697609708.png"
+    "image": "/images/intelligence_html_images_1699497687.png"
   },
   {
     "slug": "p-562",
@@ -1345,7 +1345,7 @@ export const products: Product[] = [
         "检测系统"
       ]
     },
-    "image": "/images/1697609756.png"
+    "image": "/images/detection-img04.png"
   },
   {
     "slug": "p-575",
@@ -1384,7 +1384,7 @@ export const products: Product[] = [
         "检测系统"
       ]
     },
-    "image": "/images/1697609793.png"
+    "image": "/images/detection-img01.png"
   },
   {
     "slug": "p-616",
@@ -1422,7 +1422,7 @@ export const products: Product[] = [
         "检测系统"
       ]
     },
-    "image": "/images/1697610018.png"
+    "image": "/images/detection-img02.png"
   },
   {
     "slug": "p-766",
@@ -1460,7 +1460,7 @@ export const products: Product[] = [
         "检测系统"
       ]
     },
-    "image": "/images/screenshots/industry_semiconductor.png"
+    "image": "/images/detection-img03.png"
   },
   {
     "slug": "p-1072",
@@ -1484,7 +1484,7 @@ export const products: Product[] = [
         "咨询 获取资源"
       ]
     },
-    "image": "/images/1697606262.png"
+    "image": "/images/detection-img04.png"
   }
 ];
 

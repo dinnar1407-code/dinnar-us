@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ContactForm } from "@/components/ui/ContactForm";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -65,8 +66,12 @@ export default async function AboutPage({ params }: Props) {
   return (
     <div className="bg-white">
       {/* Hero */}
-      <section className="bg-navy-500 text-white py-20">
-        <div className="container-page">
+      <section
+        className="text-white py-20 relative overflow-hidden bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url('/images/aboutus_html_images_1695026854.jpg')" }}
+      >
+        <div className="absolute inset-0 bg-navy-600/85" />
+        <div className="container-page relative z-10">
           <span className="tag-accent bg-brand-500/20 text-brand-400 border border-brand-500/30 mb-4 inline-block">About</span>
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold">{t.title}</h1>
           <p className="mt-4 text-gray-300 text-xl">{t.subtitle}</p>
@@ -131,33 +136,17 @@ export default async function AboutPage({ params }: Props) {
             <h2 className="text-3xl font-bold">{t.contact.title}</h2>
             <p className="mt-4 text-white/80 text-lg">{t.contact.subtitle}</p>
 
-            <form className="mt-10 space-y-4 max-w-lg mx-auto">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <input
-                  type="text"
-                  placeholder={lang === "zh" ? "姓名" : "Full name"}
-                  className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-white/50 text-sm"
-                />
-                <input
-                  type="email"
-                  placeholder={lang === "zh" ? "工作邮箱" : "Work email"}
-                  className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-white/50 text-sm"
-                />
-              </div>
-              <input
-                type="text"
-                placeholder={lang === "zh" ? "公司" : "Company"}
-                className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-white/50 text-sm"
-              />
-              <textarea
-                rows={4}
-                placeholder={lang === "zh" ? "描述您的生产环境和需求" : "Tell us about your production environment"}
-                className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-white/50 text-sm resize-none"
-              />
-              <button type="submit" className="btn-white w-full py-3.5 font-semibold text-brand-600">
-                {lang === "zh" ? "发送咨询" : "Send inquiry"}
-              </button>
-            </form>
+            <ContactForm
+              labels={{
+                name: lang === "zh" ? "姓名" : "Full name",
+                email: lang === "zh" ? "工作邮箱" : "Work email",
+                company: lang === "zh" ? "公司" : "Company",
+                message: lang === "zh" ? "描述您的生产环境和需求" : "Tell us about your production environment",
+                submit: lang === "zh" ? "发送咨询" : "Send inquiry",
+                successTitle: lang === "zh" ? "已收到您的留言" : "Message received",
+                successBody: lang === "zh" ? "工程师会在一个工作日内联系您" : "An engineer will reply within one business day.",
+              }}
+            />
 
             <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-white/70">
               <p className="bg-white/10 rounded-lg px-4 py-3">{t.contact.address}</p>

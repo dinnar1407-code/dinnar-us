@@ -9,7 +9,7 @@
     "runtime": null
   },
   "build": {
-    "buildCommand": null,
+    "buildCommand": "npx tsc --noEmit 2>&1 | head -20",
     "testCommand": null,
     "lintCommand": null,
     "devCommand": null,
@@ -30,6 +30,84 @@
   "customNotes": [],
   "directoryMap": {},
   "hotPaths": [
+    {
+      "path": "src/app/[locale]/page.tsx",
+      "accessCount": 22,
+      "lastAccessed": 1778392969623,
+      "type": "file"
+    },
+    {
+      "path": "src/components/layout/Header.tsx",
+      "accessCount": 9,
+      "lastAccessed": 1778390852119,
+      "type": "file"
+    },
+    {
+      "path": "src/messages/en.json",
+      "accessCount": 3,
+      "lastAccessed": 1778389986151,
+      "type": "file"
+    },
+    {
+      "path": "src/messages/zh.json",
+      "accessCount": 3,
+      "lastAccessed": 1778389986287,
+      "type": "file"
+    },
+    {
+      "path": "src/i18n/routing.ts",
+      "accessCount": 3,
+      "lastAccessed": 1778390670286,
+      "type": "file"
+    },
+    {
+      "path": "src/content/industries.ts",
+      "accessCount": 3,
+      "lastAccessed": 1778392666971,
+      "type": "file"
+    },
+    {
+      "path": "src/app/globals.css",
+      "accessCount": 2,
+      "lastAccessed": 1778373705308,
+      "type": "file"
+    },
+    {
+      "path": "src/components/three/HeroScene.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1778374358585,
+      "type": "file"
+    },
+    {
+      "path": "src/middleware.ts",
+      "accessCount": 2,
+      "lastAccessed": 1778390670529,
+      "type": "file"
+    },
+    {
+      "path": "src/app/[locale]/industries/page.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1778392662640,
+      "type": "file"
+    },
+    {
+      "path": "src/components/layout/Footer.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1778392663841,
+      "type": "file"
+    },
+    {
+      "path": "src/content/capabilities.ts",
+      "accessCount": 2,
+      "lastAccessed": 1778392667139,
+      "type": "file"
+    },
+    {
+      "path": "src/content/products.ts",
+      "accessCount": 2,
+      "lastAccessed": 1778392667463,
+      "type": "file"
+    },
     {
       "path": "content-scraped/scrape.py",
       "accessCount": 1,
@@ -67,21 +145,9 @@
       "type": "file"
     },
     {
-      "path": "src/app/globals.css",
-      "accessCount": 1,
-      "lastAccessed": 1778362809738,
-      "type": "file"
-    },
-    {
       "path": "src/i18n/request.ts",
       "accessCount": 1,
       "lastAccessed": 1778362810256,
-      "type": "file"
-    },
-    {
-      "path": "src/i18n/routing.ts",
-      "accessCount": 1,
-      "lastAccessed": 1778362810792,
       "type": "file"
     },
     {
@@ -94,48 +160,6 @@
       "path": "src/lib/utils.ts",
       "accessCount": 1,
       "lastAccessed": 1778362810993,
-      "type": "file"
-    },
-    {
-      "path": "src/content/capabilities.ts",
-      "accessCount": 1,
-      "lastAccessed": 1778362811488,
-      "type": "file"
-    },
-    {
-      "path": "src/content/industries.ts",
-      "accessCount": 1,
-      "lastAccessed": 1778362811723,
-      "type": "file"
-    },
-    {
-      "path": "src/messages/en.json",
-      "accessCount": 1,
-      "lastAccessed": 1778362823992,
-      "type": "file"
-    },
-    {
-      "path": "src/content/products.ts",
-      "accessCount": 1,
-      "lastAccessed": 1778362824436,
-      "type": "file"
-    },
-    {
-      "path": "src/components/layout/Header.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1778362834800,
-      "type": "file"
-    },
-    {
-      "path": "src/components/layout/Footer.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1778362835288,
-      "type": "file"
-    },
-    {
-      "path": "src/components/three/HeroScene.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1778362835696,
       "type": "file"
     },
     {
@@ -172,12 +196,6 @@
       "path": "src/components/ui/TiltCard.tsx",
       "accessCount": 1,
       "lastAccessed": 1778362839412,
-      "type": "file"
-    },
-    {
-      "path": "src/messages/zh.json",
-      "accessCount": 1,
-      "lastAccessed": 1778362865856,
       "type": "file"
     },
     {
@@ -280,6 +298,36 @@
       "path": "src/components/sections/Products.tsx",
       "accessCount": 1,
       "lastAccessed": 1778363199212,
+      "type": "file"
+    },
+    {
+      "path": "public/images/banner_1695379304.png",
+      "accessCount": 1,
+      "lastAccessed": 1778374375494,
+      "type": "file"
+    },
+    {
+      "path": "public/images/aboutus_html_images_1695026655.jpg",
+      "accessCount": 1,
+      "lastAccessed": 1778374375684,
+      "type": "file"
+    },
+    {
+      "path": "src/components/ui/NodeNetwork.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1778388472220,
+      "type": "file"
+    },
+    {
+      "path": "src/app/[locale]/layout.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1778389449249,
+      "type": "file"
+    },
+    {
+      "path": "src/components/ui/ScrollAnimations.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1778389639300,
       "type": "file"
     }
   ],
