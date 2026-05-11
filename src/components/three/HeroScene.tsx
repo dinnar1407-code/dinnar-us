@@ -47,6 +47,20 @@ const SGLOW = {
   roughness: 0.1,
 } as const;
 
+// Dark solid metal — robot bodies, structural parts (physical look)
+const SOLID = {
+  color: "#1c2028",
+  metalness: 0.88,
+  roughness: 0.22,
+} as const;
+
+// Darker structural metal — platforms, racks, legs
+const SOLID2 = {
+  color: "#0f1318",
+  metalness: 0.82,
+  roughness: 0.38,
+} as const;
+
 /**
  * Particles
  * 漂浮的粒子尘埃效果，向上缓慢漂移，到顶后回到底部循环。
@@ -330,7 +344,7 @@ function IndustrialArm({ position }: { position: [number, number, number] }) {
     }
   });
 
-  const wireMat = { color: C, transparent: true, opacity: 0.7, wireframe: true } as const;
+  const wireMat = { ...SOLID } as const;
 
   return (
     <group position={position}>
@@ -460,8 +474,8 @@ function HumanoidRobot({
     }
   });
 
-  // 通用 wireframe 材质参数
-  const wireMat = { color: C, transparent: true, opacity: 0.65, wireframe: true } as const;
+  // 通用固体金属材质参数
+  const wireMat = { ...SOLID } as const;
 
   return (
     <group position={position} scale={scale}>
@@ -765,7 +779,7 @@ function ControlRack({ position }: { position: [number, number, number] }) {
     });
   });
 
-  const wireMat = { color: C, transparent: true, opacity: 0.6, wireframe: true } as const;
+  const wireMat = { ...SOLID2 } as const;
 
   // 面板分隔线：5 层
   const panelRows = useMemo(() => [0.6, 0.3, 0.0, -0.3, -0.6], []);
@@ -832,7 +846,7 @@ function LongConveyor() {
     <group position={[0, -1.2, 0]}>
       <mesh>
         <boxGeometry args={[len, 0.06, 0.72]} />
-        <meshStandardMaterial color="#000000" emissive={CG} emissiveIntensity={0.15} wireframe />
+        <meshStandardMaterial {...SOLID2} />
       </mesh>
       <Line points={[new THREE.Vector3(-len/2, 0, -0.36), new THREE.Vector3(len/2, 0, -0.36)]} color={C} lineWidth={1.2} opacity={0.7} transparent />
       <Line points={[new THREE.Vector3(-len/2, 0, 0.36), new THREE.Vector3(len/2, 0, 0.36)]} color={C} lineWidth={1.2} opacity={0.7} transparent />
@@ -841,7 +855,7 @@ function LongConveyor() {
       {Array.from({ length: rollerCount }, (_, i) => (
         <mesh key={i} position={[-len/2 + 0.22 + i * 0.45, -0.04, 0]} rotation={[Math.PI/2, 0, 0]}>
           <cylinderGeometry args={[0.03, 0.03, 0.64, 6]} />
-          <meshStandardMaterial color="#000000" emissive={CG} emissiveIntensity={0.2} />
+          <meshStandardMaterial {...SOLID2} />
         </mesh>
       ))}
     </group>
@@ -912,23 +926,40 @@ function AssemblyPhone({ position, stage = 0 }) {
 }
 
 // ── AssemblyStation ───────────────────────────────────────────────────────────
-function AssemblyStation({ position, stationIdx = 0 }) {
+function AssemblyStation({
+  position,
+  stationIdx = 0,
+  robotType = "arm",
+}: {
+  position: [number, number, number];
+  stationIdx?: number;
+  robotType?: "arm" | "humanoid";
+}) {
   return (
     <group position={position}>
       {/* Work platform */}
       <mesh position={[0, -0.48, 0]}>
         <boxGeometry args={[0.9, 0.06, 1.1]} />
-        <meshStandardMaterial {...WD} />
+        <meshStandardMaterial {...SOLID2} />
       </mesh>
       {/* Support legs */}
       {([[-0.35, -0.4, -0.4], [0.35, -0.4, -0.4], [-0.35, -0.4, 0.4], [0.35, -0.4, 0.4]] as [number,number,number][]).map(([lx, ly, lz], i) => (
         <mesh key={i} position={[lx, ly - 0.48, lz]}>
           <cylinderGeometry args={[0.03, 0.03, 0.8, 6]} />
-          <meshStandardMaterial {...WD} />
+          <meshStandardMaterial {...SOLID2} />
         </mesh>
       ))}
-      {/* 6-axis arm */}
-      <IndustrialArm position={[0, -0.45, 0]} />
+      {/* Robot: industrial arm at ends, humanoid at middle stations */}
+      {robotType === "arm" ? (
+        <IndustrialArm position={[0, -0.45, 0]} />
+      ) : (
+        <HumanoidRobot
+          position={[0, -1.15, 0.5]}
+          scale={0.82}
+          variant="work"
+          phase={stationIdx * 1.2}
+        />
+      )}
       {/* Holographic display above */}
       <HoloDisplay position={[0, 2.05, 0]} />
       {/* Status LED */}
@@ -955,9 +986,14 @@ function LinearFactoryScene() {
       <AssemblyPhone position={[3, -1.15, 0]} stage={3} />
       <AssemblyPhone position={[6, -1.15, 0]} stage={5} />
 
-      {/* 5 assembly stations along back wall */}
+      {/* 5 assembly stations: humanoid at middle 3, industrial arm at ends */}
       {([-6, -3, 0, 3, 6] as number[]).map((x, i) => (
-        <AssemblyStation key={i} position={[x, 0, -1.4] as [number, number, number]} stationIdx={i} />
+        <AssemblyStation
+          key={i}
+          position={[x, 0, -1.4] as [number, number, number]}
+          stationIdx={i}
+          robotType={i === 0 || i === 4 ? "arm" : "humanoid"}
+        />
       ))}
 
       {/* Monitoring humanoid robots on front side */}
