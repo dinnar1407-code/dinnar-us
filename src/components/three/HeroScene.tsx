@@ -4,11 +4,48 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { Float, OrbitControls, Line } from "@react-three/drei";
 import { useMemo, useRef } from "react";
 import * as THREE from "three";
+import { EffectComposer, Bloom, Vignette } from "@react-three/postprocessing";
+import { BlendFunction } from "postprocessing";
+import { MeshReflectorMaterial } from "@react-three/drei";
 
 // 主色调：cyan wireframe color used everywhere
 const C = "#39d6ff";
 // 背景结构色：稍暗的青色，用于次要结构件（gantry、columns 等）
 const CG = "#1d8fa8";
+
+// meshStandardMaterial props — glowing cyan wireframe (triggers Bloom)
+const W = {
+  color: "#000011",
+  emissive: "#39d6ff",
+  emissiveIntensity: 0.7,
+  wireframe: true,
+} as const;
+
+// meshStandardMaterial props — dim background structure
+const WD = {
+  color: "#000008",
+  emissive: "#1d8fa8",
+  emissiveIntensity: 0.28,
+  wireframe: true,
+} as const;
+
+// Solid bright glow — sphere joints, tool tips, eyes → triggers strong Bloom
+const GLOW = {
+  color: "#39d6ff",
+  emissive: "#39d6ff",
+  emissiveIntensity: 3.5,
+  metalness: 0.9,
+  roughness: 0.05,
+} as const;
+
+// White super-glow — eye strips, arm tool tips (brightest elements)
+const SGLOW = {
+  color: "#ffffff",
+  emissive: "#c8f0ff",
+  emissiveIntensity: 2.5,
+  metalness: 0.5,
+  roughness: 0.1,
+} as const;
 
 /**
  * Particles
@@ -51,7 +88,7 @@ function Particles({ count = 1500 }: { count?: number }) {
         />
       </bufferGeometry>
       <pointsMaterial
-        size={0.022}
+        size={0.025}
         color={C}
         transparent
         opacity={0.6}
@@ -116,8 +153,8 @@ function DataStream({
         />
       </bufferGeometry>
       <pointsMaterial
-        size={0.05}
-        color={C}
+        size={0.07}
+        color="#7ef5ff"
         transparent
         opacity={0.9}
         depthWrite={false}
@@ -187,14 +224,14 @@ function HoloDisplay({ position }: { position: [number, number, number] }) {
       {bars.map((b, i) => (
         <mesh key={i} position={[-W / 2 + b.w / 2 + 0.05, b.y, 0]}>
           <boxGeometry args={[b.w, 0.04, 0.005]} />
-          <meshBasicMaterial color={C} transparent opacity={0.55} />
+          <meshStandardMaterial color={C} transparent opacity={0.55} />
         </mesh>
       ))}
 
       {/* 扫描线 */}
       <mesh ref={scanRef}>
         <boxGeometry args={[W - 0.05, 0.012, 0.008]} />
-        <meshBasicMaterial color={C} transparent opacity={0.9} />
+        <meshStandardMaterial {...GLOW} />
       </mesh>
 
       {/* 四角点 */}
@@ -206,7 +243,7 @@ function HoloDisplay({ position }: { position: [number, number, number] }) {
       ].map(([x, y], i) => (
         <mesh key={`c-${i}`} position={[x, y, 0]}>
           <sphereGeometry args={[0.018, 6, 6]} />
-          <meshBasicMaterial color={C} transparent opacity={1} />
+          <meshStandardMaterial {...GLOW} />
         </mesh>
       ))}
     </group>
@@ -215,25 +252,27 @@ function HoloDisplay({ position }: { position: [number, number, number] }) {
 
 /**
  * FactoryFloor
- * 工厂地面网格：14x14 单位，22 等分，淡蓝色低透明度。
+ * 反射地面：用 MeshReflectorMaterial 营造电影感的镜面反射效果。
  */
 function FactoryFloor() {
-  const size = 14;
-  const divisions = 22;
-  const points = useMemo(() => {
-    const pts: THREE.Vector3[] = [];
-    const half = size / 2;
-    const step = size / divisions;
-    for (let i = 0; i <= divisions; i++) {
-      const pos = -half + i * step;
-      // 横向线
-      pts.push(new THREE.Vector3(pos, -2, -half), new THREE.Vector3(pos, -2, half));
-      // 纵向线
-      pts.push(new THREE.Vector3(-half, -2, pos), new THREE.Vector3(half, -2, pos));
-    }
-    return pts;
-  }, []);
-  return <Line points={points} color={C} lineWidth={0.5} opacity={0.2} transparent />;
+  return (
+    <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -2.01, 0]} receiveShadow>
+      <planeGeometry args={[22, 18]} />
+      <MeshReflectorMaterial
+        blur={[400, 100]}
+        resolution={512}
+        mixBlur={0.8}
+        mixStrength={15}
+        depthScale={1}
+        minDepthThreshold={0.85}
+        maxDepthThreshold={1}
+        color="#020b14"
+        metalness={0.6}
+        roughness={0.9}
+        mirror={0.4}
+      />
+    </mesh>
+  );
 }
 
 /**
@@ -298,7 +337,7 @@ function IndustrialArm({ position }: { position: [number, number, number] }) {
       {/* 圆柱形底座：固定，不随关节转 */}
       <mesh position={[0, -1.7, 0]}>
         <cylinderGeometry args={[0.3, 0.35, 0.2, 16]} />
-        <meshBasicMaterial {...wireMat} />
+        <meshStandardMaterial {...wireMat} />
       </mesh>
 
       {/* 转盘：绕 Y 轴旋转，承载整条手臂 */}
@@ -306,12 +345,12 @@ function IndustrialArm({ position }: { position: [number, number, number] }) {
         {/* 转盘本体 */}
         <mesh position={[0, 0.05, 0]}>
           <cylinderGeometry args={[0.25, 0.25, 0.15, 16]} />
-          <meshBasicMaterial {...wireMat} />
+          <meshStandardMaterial {...wireMat} />
         </mesh>
         {/* 肩部球关节 */}
         <mesh position={[0, 0.2, 0]}>
           <sphereGeometry args={[0.18, 12, 12]} />
-          <meshBasicMaterial {...wireMat} />
+          <meshStandardMaterial {...wireMat} />
         </mesh>
 
         {/* 上臂：绕 Z 旋转，挂在肩部 */}
@@ -319,24 +358,24 @@ function IndustrialArm({ position }: { position: [number, number, number] }) {
           {/* 上臂方箱：朝上延伸 0.6 单位 */}
           <mesh position={[0, 0.4, 0]}>
             <boxGeometry args={[0.18, 0.8, 0.18]} />
-            <meshBasicMaterial {...wireMat} />
+            <meshStandardMaterial {...wireMat} />
           </mesh>
           {/* 肘部球关节 */}
           <mesh position={[0, 0.8, 0]}>
             <sphereGeometry args={[0.14, 12, 12]} />
-            <meshBasicMaterial {...wireMat} />
+            <meshStandardMaterial {...wireMat} />
           </mesh>
 
           {/* 前臂：绕 Z 旋转，挂在肘部 */}
           <group ref={forearmRef} position={[0, 0.8, 0]}>
             <mesh position={[0, 0.35, 0]}>
               <boxGeometry args={[0.14, 0.7, 0.14]} />
-              <meshBasicMaterial {...wireMat} />
+              <meshStandardMaterial {...wireMat} />
             </mesh>
             {/* 腕部球关节 */}
             <mesh position={[0, 0.7, 0]}>
               <sphereGeometry args={[0.11, 12, 12]} />
-              <meshBasicMaterial {...wireMat} />
+              <meshStandardMaterial {...wireMat} />
             </mesh>
 
             {/* 腕部 + 工具头 */}
@@ -344,12 +383,12 @@ function IndustrialArm({ position }: { position: [number, number, number] }) {
               {/* 工具圆柱（焊枪/抓手） */}
               <mesh position={[0, 0.15, 0]}>
                 <cylinderGeometry args={[0.06, 0.08, 0.25, 12]} />
-                <meshBasicMaterial {...wireMat} />
+                <meshStandardMaterial {...GLOW} />
               </mesh>
               {/* 末端发光白点：会脉冲 */}
               <mesh ref={tipRef} position={[0, 0.32, 0]}>
                 <sphereGeometry args={[0.05, 8, 8]} />
-                <meshBasicMaterial color="#ffffff" transparent opacity={0.95} />
+                <meshStandardMaterial {...SGLOW} />
               </mesh>
             </group>
           </group>
@@ -431,55 +470,55 @@ function HumanoidRobot({
         {/* 头部主体方盒 */}
         <mesh>
           <boxGeometry args={[0.23, 0.23, 0.23]} />
-          <meshBasicMaterial {...wireMat} />
+          <meshStandardMaterial {...wireMat} />
         </mesh>
         {/* 面罩：贴在头部前方，半透明青色 */}
         <mesh position={[0, 0, 0.117]}>
           <boxGeometry args={[0.18, 0.14, 0.01]} />
-          <meshBasicMaterial color={C} transparent opacity={0.35} />
+          <meshStandardMaterial color={C} transparent opacity={0.35} />
         </mesh>
         {/* 眼带：白色发光条 */}
         <mesh ref={eyeRef} position={[0, 0.02, 0.122]}>
           <boxGeometry args={[0.14, 0.025, 0.005]} />
-          <meshBasicMaterial color="#ffffff" transparent opacity={0.85} />
+          <meshStandardMaterial {...SGLOW} />
         </mesh>
         {/* 天线：圆柱 + 球头 */}
         <mesh position={[0, 0.18, 0]}>
           <cylinderGeometry args={[0.008, 0.008, 0.1, 6]} />
-          <meshBasicMaterial color={C} transparent opacity={0.8} />
+          <meshStandardMaterial color={C} transparent opacity={0.8} />
         </mesh>
         <mesh position={[0, 0.24, 0]}>
           <sphereGeometry args={[0.022, 6, 6]} />
-          <meshBasicMaterial color="#ffffff" transparent opacity={0.9} />
+          <meshStandardMaterial {...GLOW} />
         </mesh>
       </group>
 
       {/* 颈部 */}
       <mesh position={[0, 1.38, 0]}>
         <cylinderGeometry args={[0.05, 0.07, 0.12, 8]} />
-        <meshBasicMaterial {...wireMat} />
+        <meshStandardMaterial {...wireMat} />
       </mesh>
 
       {/* ============ 躯干 ============ */}
       <mesh position={[0, 0.95, 0]}>
         <boxGeometry args={[0.4, 0.72, 0.24]} />
-        <meshBasicMaterial {...wireMat} />
+        <meshStandardMaterial {...wireMat} />
       </mesh>
       {/* 胸前面板（更暗的覆盖层） */}
       <mesh position={[0, 0.95, 0.125]}>
         <boxGeometry args={[0.28, 0.5, 0.01]} />
-        <meshBasicMaterial color={C} transparent opacity={0.25} />
+        <meshStandardMaterial color={C} transparent opacity={0.25} />
       </mesh>
       {/* 胸口发光圆 */}
       <mesh position={[0, 1.0, 0.13]} rotation={[Math.PI / 2, 0, 0]}>
         <cylinderGeometry args={[0.04, 0.04, 0.005, 12]} />
-        <meshBasicMaterial color="#ffffff" transparent opacity={0.85} />
+        <meshStandardMaterial {...GLOW} />
       </mesh>
 
       {/* 骨盆 */}
       <mesh position={[0, 0.5, 0]}>
         <boxGeometry args={[0.32, 0.16, 0.22]} />
-        <meshBasicMaterial {...wireMat} />
+        <meshStandardMaterial {...wireMat} />
       </mesh>
 
       {/* ============ 左臂（从观察者角度看是右边） ============ */}
@@ -487,30 +526,30 @@ function HumanoidRobot({
         {/* 肩部球 */}
         <mesh>
           <sphereGeometry args={[0.07, 10, 10]} />
-          <meshBasicMaterial {...wireMat} />
+          <meshStandardMaterial {...GLOW} />
         </mesh>
         {/* 上臂组（绕肩部旋转） */}
         <group ref={lShoulderRef}>
           <mesh position={[0, -0.18, 0]}>
             <cylinderGeometry args={[0.05, 0.05, 0.32, 8]} />
-            <meshBasicMaterial {...wireMat} />
+            <meshStandardMaterial {...wireMat} />
           </mesh>
           {/* 肘部 */}
           <group position={[0, -0.34, 0]}>
             <mesh>
               <sphereGeometry args={[0.055, 10, 10]} />
-              <meshBasicMaterial {...wireMat} />
+              <meshStandardMaterial {...GLOW} />
             </mesh>
             {/* 前臂组（绕肘部旋转） */}
             <group ref={lElbowRef}>
               <mesh position={[0, -0.17, 0]}>
                 <cylinderGeometry args={[0.045, 0.045, 0.3, 8]} />
-                <meshBasicMaterial {...wireMat} />
+                <meshStandardMaterial {...wireMat} />
               </mesh>
               {/* 手部 */}
               <mesh position={[0, -0.36, 0]}>
                 <boxGeometry args={[0.09, 0.1, 0.07]} />
-                <meshBasicMaterial {...wireMat} />
+                <meshStandardMaterial {...wireMat} />
               </mesh>
             </group>
           </group>
@@ -521,32 +560,32 @@ function HumanoidRobot({
       <group position={[-0.24, 1.25, 0]}>
         <mesh>
           <sphereGeometry args={[0.07, 10, 10]} />
-          <meshBasicMaterial {...wireMat} />
+          <meshStandardMaterial {...GLOW} />
         </mesh>
         <group ref={rShoulderRef}>
           <mesh position={[0, -0.18, 0]}>
             <cylinderGeometry args={[0.05, 0.05, 0.32, 8]} />
-            <meshBasicMaterial {...wireMat} />
+            <meshStandardMaterial {...wireMat} />
           </mesh>
           <group position={[0, -0.34, 0]}>
             <mesh>
               <sphereGeometry args={[0.055, 10, 10]} />
-              <meshBasicMaterial {...wireMat} />
+              <meshStandardMaterial {...GLOW} />
             </mesh>
             <group ref={rElbowRef}>
               <mesh position={[0, -0.17, 0]}>
                 <cylinderGeometry args={[0.045, 0.045, 0.3, 8]} />
-                <meshBasicMaterial {...wireMat} />
+                <meshStandardMaterial {...wireMat} />
               </mesh>
               <mesh position={[0, -0.36, 0]}>
                 <boxGeometry args={[0.09, 0.1, 0.07]} />
-                <meshBasicMaterial {...wireMat} />
+                <meshStandardMaterial {...wireMat} />
               </mesh>
               {/* 扫描光束：仅 scan 模式时渲染，从手部向下延伸 */}
               {variant === "scan" && (
                 <mesh ref={scanBeamRef} position={[0, -0.65, 0]}>
                   <boxGeometry args={[0.02, 0.5, 0.02]} />
-                  <meshBasicMaterial color={C} transparent opacity={0.6} />
+                  <meshStandardMaterial color={C} transparent opacity={0.6} />
                 </mesh>
               )}
             </group>
@@ -559,27 +598,27 @@ function HumanoidRobot({
         {/* 髋关节球 */}
         <mesh>
           <sphereGeometry args={[0.07, 10, 10]} />
-          <meshBasicMaterial {...wireMat} />
+          <meshStandardMaterial {...GLOW} />
         </mesh>
         {/* 大腿 */}
         <mesh position={[0, -0.22, 0]}>
           <cylinderGeometry args={[0.07, 0.06, 0.4, 8]} />
-          <meshBasicMaterial {...wireMat} />
+          <meshStandardMaterial {...wireMat} />
         </mesh>
         {/* 膝关节球 */}
         <mesh position={[0, -0.44, 0]}>
           <sphereGeometry args={[0.06, 10, 10]} />
-          <meshBasicMaterial {...wireMat} />
+          <meshStandardMaterial {...GLOW} />
         </mesh>
         {/* 小腿 */}
         <mesh position={[0, -0.65, 0]}>
           <cylinderGeometry args={[0.055, 0.05, 0.38, 8]} />
-          <meshBasicMaterial {...wireMat} />
+          <meshStandardMaterial {...wireMat} />
         </mesh>
         {/* 脚（比身体宽，比脚高扁） */}
         <mesh position={[0, -0.87, 0.03]}>
           <boxGeometry args={[0.13, 0.06, 0.2]} />
-          <meshBasicMaterial {...wireMat} />
+          <meshStandardMaterial {...wireMat} />
         </mesh>
       </group>
 
@@ -587,23 +626,23 @@ function HumanoidRobot({
       <group position={[-0.1, 0.4, 0]}>
         <mesh>
           <sphereGeometry args={[0.07, 10, 10]} />
-          <meshBasicMaterial {...wireMat} />
+          <meshStandardMaterial {...GLOW} />
         </mesh>
         <mesh position={[0, -0.22, 0]}>
           <cylinderGeometry args={[0.07, 0.06, 0.4, 8]} />
-          <meshBasicMaterial {...wireMat} />
+          <meshStandardMaterial {...wireMat} />
         </mesh>
         <mesh position={[0, -0.44, 0]}>
           <sphereGeometry args={[0.06, 10, 10]} />
-          <meshBasicMaterial {...wireMat} />
+          <meshStandardMaterial {...GLOW} />
         </mesh>
         <mesh position={[0, -0.65, 0]}>
           <cylinderGeometry args={[0.055, 0.05, 0.38, 8]} />
-          <meshBasicMaterial {...wireMat} />
+          <meshStandardMaterial {...wireMat} />
         </mesh>
         <mesh position={[0, -0.87, 0.03]}>
           <boxGeometry args={[0.13, 0.06, 0.2]} />
-          <meshBasicMaterial {...wireMat} />
+          <meshStandardMaterial {...wireMat} />
         </mesh>
       </group>
     </group>
@@ -677,7 +716,7 @@ function ConveyorBelt({
       {/* 传送带表面 wireframe */}
       <mesh>
         <boxGeometry args={[length, 0.08, 0.6]} />
-        <meshBasicMaterial color={C} transparent opacity={0.3} wireframe />
+        <meshStandardMaterial color={C} transparent opacity={0.3} wireframe />
       </mesh>
 
       {/* 两条边轨 */}
@@ -692,7 +731,7 @@ function ConveyorBelt({
           rotation={[Math.PI / 2, 0, 0]}
         >
           <cylinderGeometry args={[0.04, 0.04, 0.55, 8]} />
-          <meshBasicMaterial color={C} transparent opacity={0.45} />
+          <meshStandardMaterial color={C} transparent opacity={0.45} />
         </mesh>
       ))}
 
@@ -701,7 +740,7 @@ function ConveyorBelt({
         {items.map((it, i) => (
           <mesh key={`item-${i}`} position={[0, 0.15, 0]}>
             <boxGeometry args={it.size} />
-            <meshBasicMaterial color={C} transparent opacity={0.55} wireframe />
+            <meshStandardMaterial color={C} transparent opacity={0.55} wireframe />
           </mesh>
         ))}
       </group>
@@ -736,14 +775,14 @@ function ControlRack({ position }: { position: [number, number, number] }) {
       {/* 机柜主体 */}
       <mesh>
         <boxGeometry args={[0.7, 1.7, 0.5]} />
-        <meshBasicMaterial {...wireMat} />
+        <meshStandardMaterial {...wireMat} />
       </mesh>
 
       {/* 面板分隔线：薄扁的 box 表示分层 */}
       {panelRows.map((y, i) => (
         <mesh key={`row-${i}`} position={[0, y, 0.251]}>
           <boxGeometry args={[0.55, 0.015, 0.005]} />
-          <meshBasicMaterial color={C} transparent opacity={0.5} />
+          <meshStandardMaterial color={C} transparent opacity={0.5} />
         </mesh>
       ))}
 
@@ -757,7 +796,7 @@ function ControlRack({ position }: { position: [number, number, number] }) {
           position={[-0.22 + i * 0.11, 0.75, 0.26]}
         >
           <sphereGeometry args={[0.022, 8, 8]} />
-          <meshBasicMaterial color={i % 2 === 0 ? "#ffffff" : C} transparent opacity={0.8} />
+          <meshStandardMaterial {...GLOW} />
         </mesh>
       ))}
     </group>
@@ -826,14 +865,32 @@ export function HeroScene() {
       camera={{ position: [0, 0.5, 9], fov: 52 }}
       gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
     >
-      {/* 环境光：给整体一个低底色 */}
-      <ambientLight intensity={0.25} />
-      {/* 主方向光：偏冷青色 */}
-      <directionalLight position={[5, 8, 6]} intensity={0.9} color="#7ee7ff" />
-      {/* 副方向光：紫色补光，增加层次 */}
-      <directionalLight position={[-6, -2, -4]} intensity={0.35} color="#7c4dff" />
+      {/* 极低环境光：让 emissive 主导画面，制造电影感的深色基调 */}
+      <ambientLight intensity={0.04} />
+      {/* 顶部柔和补光 */}
+      <directionalLight position={[0, 12, 4]} intensity={0.2} color="#ffffff" />
+      {/* 主聚光：偏冷青色，从左上方打入 */}
+      <spotLight
+        position={[-6, 9, 3]}
+        intensity={3}
+        color="#7ee7ff"
+        angle={0.45}
+        penumbra={0.85}
+        decay={1.5}
+      />
+      {/* 副聚光：紫色补光从右后方打入，增加层次 */}
+      <spotLight
+        position={[7, 7, -3]}
+        intensity={2}
+        color="#7c4dff"
+        angle={0.5}
+        penumbra={0.9}
+        decay={1.5}
+      />
       {/* 中心点光源：在后排机器人附近，强化中心亮度 */}
-      <pointLight position={[0, 1, -0.8]} intensity={0.5} color={C} distance={4} />
+      <pointLight position={[0, 1.5, -0.7]} intensity={2} color="#39d6ff" distance={5} decay={2} />
+      {/* 右侧点光源：照亮工业臂区域 */}
+      <pointLight position={[4, 0, 0]} intensity={1.5} color="#39d6ff" distance={4} decay={2} />
 
       {/* Float 让整个场景轻微浮动 */}
       <Float speed={0.35} floatIntensity={0.25} rotationIntensity={0.1}>
@@ -851,6 +908,22 @@ export function HeroScene() {
         autoRotateSpeed={0.2}
         enableDamping
       />
+
+      {/* 后期处理：Bloom 让 emissive 部分发光，Vignette 边缘暗角 */}
+      <EffectComposer>
+        <Bloom
+          intensity={1.4}
+          luminanceThreshold={0.25}
+          luminanceSmoothing={0.85}
+          mipmapBlur
+          radius={0.7}
+        />
+        <Vignette
+          offset={0.15}
+          darkness={0.75}
+          blendFunction={BlendFunction.NORMAL}
+        />
+      </EffectComposer>
     </Canvas>
   );
 }
