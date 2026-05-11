@@ -1,10 +1,10 @@
 // @ts-nocheck
 "use client";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Float, OrbitControls, Line } from "@react-three/drei";
-import { useMemo, useRef } from "react";
+import { useMemo, useRef, useEffect } from "react";
 import * as THREE from "three";
-import { EffectComposer, Bloom, Vignette } from "@react-three/postprocessing";
+import { EffectComposer, Bloom, Vignette, DepthOfField } from "@react-three/postprocessing";
 import { BlendFunction } from "postprocessing";
 import { MeshReflectorMaterial } from "@react-three/drei";
 
@@ -812,7 +812,7 @@ function FactoryScene() {
   useFrame(({ clock }) => {
     if (!groupRef.current) return;
     // 整体缓慢绕 Y 轴自转，营造观察感
-    groupRef.current.rotation.y = clock.elapsedTime * 0.07;
+    groupRef.current.rotation.y = clock.elapsedTime * 0.015;
   });
 
   return (
@@ -852,6 +852,68 @@ function FactoryScene() {
       <DataStream from={[-4.5, -0.2, 0]} to={[-3, 0, -0.8]} speed={0.5} offset={0.6} />
     </group>
   );
+}
+
+/**
+ * CinematicCamera — auto-advances through 6 cinematic shots.
+ * Each shot defines a camera position, look-at target, and duration.
+ * Smooth lerp creates the gliding, floating camera feel.
+ */
+function CinematicCamera() {
+  const { camera } = useThree();
+
+  const shots = [
+    // 1. Grand establishing — high wide shot, slow push in
+    { pos: [0, 7, 13] as [number, number, number], target: [0, -0.5, 0] as [number, number, number], dur: 5 },
+    // 2. Industrial arm focus — close on the 6-axis arm
+    { pos: [6.5, 2.5, 4] as [number, number, number], target: [4.2, 0.4, 0] as [number, number, number], dur: 4 },
+    // 3. Robot row sweep — eye-level, sweeping along back robot line
+    { pos: [-6, 0, -0.2] as [number, number, number], target: [3, -0.2, -0.85] as [number, number, number], dur: 4 },
+    // 4. Hologram close — tight on central holographic display
+    { pos: [0, 1.2, 1.2] as [number, number, number], target: [0, 0.4, -0.85] as [number, number, number], dur: 3.5 },
+    // 5. Conveyor low angle — dramatic ground-level shot along conveyor
+    { pos: [3.5, -1, 4] as [number, number, number], target: [-2, -1.2, 0] as [number, number, number], dur: 3.5 },
+    // 6. God view finale — pulls back and rises to reveal full factory
+    { pos: [2, 10, 8] as [number, number, number], target: [0, -1, 0] as [number, number, number], dur: 5 },
+  ];
+
+  const desiredPos = useRef(new THREE.Vector3(...shots[0].pos));
+  const desiredTarget = useRef(new THREE.Vector3(...shots[0].target));
+  const lerpTarget = useRef(new THREE.Vector3(...shots[0].target));
+  const elapsed = useRef(0);
+  const shotIdx = useRef(0);
+
+  // Initialise camera to first shot position immediately
+  useEffect(() => {
+    camera.position.set(...shots[0].pos);
+    camera.lookAt(new THREE.Vector3(...shots[0].target));
+  }, []);
+
+  useFrame((_, delta) => {
+    elapsed.current += delta;
+    const shot = shots[shotIdx.current];
+
+    if (elapsed.current >= shot.dur) {
+      elapsed.current = 0;
+      shotIdx.current = (shotIdx.current + 1) % shots.length;
+      const next = shots[shotIdx.current];
+      desiredPos.current.set(...next.pos);
+      desiredTarget.current.set(...next.target);
+    }
+
+    // Subtle handheld drift within each shot — adds organic life
+    const t = elapsed.current;
+    const driftX = Math.sin(t * 0.28 + shotIdx.current) * 0.04;
+    const driftY = Math.cos(t * 0.19 + shotIdx.current * 1.3) * 0.025;
+    const driftedPos = desiredPos.current.clone().add(new THREE.Vector3(driftX, driftY, 0));
+
+    // Lerp camera position and look-at for smooth gliding movement
+    camera.position.lerp(driftedPos, 0.012);
+    lerpTarget.current.lerp(desiredTarget.current, 0.012);
+    camera.lookAt(lerpTarget.current);
+  });
+
+  return null;
 }
 
 /**
@@ -900,14 +962,8 @@ export function HeroScene() {
       {/* 全场粒子 */}
       <Particles />
 
-      {/* OrbitControls：禁止平移和缩放，自动慢速旋转 */}
-      <OrbitControls
-        enablePan={false}
-        enableZoom={false}
-        autoRotate
-        autoRotateSpeed={0.2}
-        enableDamping
-      />
+      {/* CinematicCamera：自动在 6 个机位间切换 */}
+      <CinematicCamera />
 
       {/* 后期处理：Bloom 让 emissive 部分发光，Vignette 边缘暗角 */}
       <EffectComposer>
@@ -917,6 +973,12 @@ export function HeroScene() {
           luminanceSmoothing={0.85}
           mipmapBlur
           radius={0.7}
+        />
+        <DepthOfField
+          focusDistance={0.008}
+          focalLength={0.04}
+          bokehScale={2.5}
+          height={480}
         />
         <Vignette
           offset={0.15}
