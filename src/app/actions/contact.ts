@@ -1,5 +1,7 @@
 "use server";
 
+import { Resend } from "resend";
+
 export type ContactFormData = {
   name: string;
   email: string;
@@ -23,7 +25,6 @@ export async function submitContact(data: ContactFormData): Promise<ContactResul
   }
 
   try {
-    const { Resend } = await import("resend");
     const resend = new Resend(apiKey);
 
     await resend.emails.send({
