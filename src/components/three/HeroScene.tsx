@@ -257,7 +257,7 @@ function HoloDisplay({ position }: { position: [number, number, number] }) {
 function FactoryFloor() {
   return (
     <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -2.01, 0]} receiveShadow>
-      <planeGeometry args={[22, 18]} />
+      <planeGeometry args={[30, 10]} />
       <MeshReflectorMaterial
         blur={[400, 100]}
         resolution={512}
@@ -803,53 +803,182 @@ function ControlRack({ position }: { position: [number, number, number] }) {
   );
 }
 
-/**
- * FactoryScene
- * 整个工厂场景：缓慢自转，包含地面、桁架、传送带、机器人、工业臂、面板、机柜、数据流。
- */
-function FactoryScene() {
-  const groupRef = useRef(null);
-  useFrame(({ clock }) => {
-    if (!groupRef.current) return;
-    // 整体缓慢绕 Y 轴自转，营造观察感
-    groupRef.current.rotation.y = clock.elapsedTime * 0.015;
-  });
+// ── LinearGantry ─────────────────────────────────────────────────────────────
+function LinearGantry() {
+  const pts = useMemo(() => {
+    const arr: THREE.Vector3[] = [];
+    const len = 20;
+    for (const z of [-2, 2]) {
+      arr.push(new THREE.Vector3(-len / 2, 2.8, z), new THREE.Vector3(len / 2, 2.8, z));
+    }
+    for (let x = -9; x <= 9; x += 3) {
+      arr.push(new THREE.Vector3(x, 2.8, -2), new THREE.Vector3(x, 2.8, 2));
+    }
+    for (const x of [-9, -6, -3, 0, 3, 6, 9]) {
+      for (const z of [-2, 2]) {
+        arr.push(new THREE.Vector3(x, 2.8, z), new THREE.Vector3(x, -2, z));
+      }
+    }
+    return arr;
+  }, []);
+  return <Line points={pts} color={CG} lineWidth={0.4} opacity={0.3} transparent />;
+}
 
+// ── LongConveyor ─────────────────────────────────────────────────────────────
+function LongConveyor() {
+  const len = 18;
+  const rollerCount = Math.ceil(len / 0.45);
   return (
-    <group ref={groupRef}>
-      {/* 地面网格 */}
+    <group position={[0, -1.2, 0]}>
+      <mesh>
+        <boxGeometry args={[len, 0.06, 0.72]} />
+        <meshStandardMaterial color="#000000" emissive={CG} emissiveIntensity={0.15} wireframe />
+      </mesh>
+      <Line points={[new THREE.Vector3(-len/2, 0, -0.36), new THREE.Vector3(len/2, 0, -0.36)]} color={C} lineWidth={1.2} opacity={0.7} transparent />
+      <Line points={[new THREE.Vector3(-len/2, 0, 0.36), new THREE.Vector3(len/2, 0, 0.36)]} color={C} lineWidth={1.2} opacity={0.7} transparent />
+      <Line points={[new THREE.Vector3(-len/2, 0, -0.36), new THREE.Vector3(-len/2, 0, 0.36)]} color={C} lineWidth={1.5} opacity={0.8} transparent />
+      <Line points={[new THREE.Vector3(len/2, 0, -0.36), new THREE.Vector3(len/2, 0, 0.36)]} color={C} lineWidth={1.5} opacity={0.8} transparent />
+      {Array.from({ length: rollerCount }, (_, i) => (
+        <mesh key={i} position={[-len/2 + 0.22 + i * 0.45, -0.04, 0]} rotation={[Math.PI/2, 0, 0]}>
+          <cylinderGeometry args={[0.03, 0.03, 0.64, 6]} />
+          <meshStandardMaterial color="#000000" emissive={CG} emissiveIntensity={0.2} />
+        </mesh>
+      ))}
+    </group>
+  );
+}
+
+// ── AssemblyPhone ─────────────────────────────────────────────────────────────
+// iPhone lying flat on conveyor; stage drives visual assembly progression.
+function AssemblyPhone({ position, stage = 0 }) {
+  return (
+    <group position={position}>
+      {/* Carrier tray — always present */}
+      <mesh>
+        <boxGeometry args={[0.58, 0.010, 0.30]} />
+        <meshStandardMaterial {...WD} />
+      </mesh>
+      {/* Stage 1+: PCB board */}
+      {stage >= 1 && (
+        <mesh position={[0, 0.008, 0]}>
+          <boxGeometry args={[0.50, 0.004, 0.24]} />
+          <meshStandardMaterial {...W} />
+        </mesh>
+      )}
+      {/* Stage 2+: Component blocks */}
+      {stage >= 2 && ([
+        [0.12, 0.07], [-0.08, -0.08], [0.05, -0.09], [-0.15, 0.06], [0.18, -0.02],
+      ] as [number, number][]).map(([x, z], i) => (
+        <mesh key={i} position={[x, 0.013, z]}>
+          <boxGeometry args={[0.04, 0.007, 0.05]} />
+          <meshStandardMaterial {...GLOW} />
+        </mesh>
+      ))}
+      {/* Stage 3+: Screen glass */}
+      {stage >= 3 && (
+        <mesh position={[0, 0.015, 0]}>
+          <boxGeometry args={[0.48, 0.003, 0.23]} />
+          <meshStandardMaterial color="#39d6ff" emissive="#39d6ff" emissiveIntensity={0.55} transparent opacity={0.45} />
+        </mesh>
+      )}
+      {/* Stage 5: Complete iPhone body with camera module */}
+      {stage >= 5 && (
+        <>
+          <mesh position={[0, 0.013, 0]}>
+            <boxGeometry args={[0.52, 0.025, 0.26]} />
+            <meshStandardMaterial {...W} />
+          </mesh>
+          {/* Camera module bump */}
+          <mesh position={[0.17, 0.027, -0.06]}>
+            <boxGeometry args={[0.13, 0.009, 0.12]} />
+            <meshStandardMaterial {...GLOW} />
+          </mesh>
+          {/* Three camera lenses */}
+          {([[-0.03, 0.032, -0.04], [0.03, 0.032, -0.04], [0, 0.032, -0.08]] as [number,number,number][]).map(([lx, ly, lz], i) => (
+            <mesh key={i} position={[0.17 + lx, ly, -0.06 + lz]}>
+              <cylinderGeometry args={[0.017, 0.017, 0.004, 8]} />
+              <meshStandardMaterial {...SGLOW} />
+            </mesh>
+          ))}
+          {/* Side power button */}
+          <mesh position={[0.263, 0.015, 0.05]}>
+            <boxGeometry args={[0.005, 0.02, 0.058]} />
+            <meshStandardMaterial {...GLOW} />
+          </mesh>
+        </>
+      )}
+    </group>
+  );
+}
+
+// ── AssemblyStation ───────────────────────────────────────────────────────────
+function AssemblyStation({ position, stationIdx = 0 }) {
+  return (
+    <group position={position}>
+      {/* Work platform */}
+      <mesh position={[0, -0.48, 0]}>
+        <boxGeometry args={[0.9, 0.06, 1.1]} />
+        <meshStandardMaterial {...WD} />
+      </mesh>
+      {/* Support legs */}
+      {([[-0.35, -0.4, -0.4], [0.35, -0.4, -0.4], [-0.35, -0.4, 0.4], [0.35, -0.4, 0.4]] as [number,number,number][]).map(([lx, ly, lz], i) => (
+        <mesh key={i} position={[lx, ly - 0.48, lz]}>
+          <cylinderGeometry args={[0.03, 0.03, 0.8, 6]} />
+          <meshStandardMaterial {...WD} />
+        </mesh>
+      ))}
+      {/* 6-axis arm */}
+      <IndustrialArm position={[0, -0.45, 0]} />
+      {/* Holographic display above */}
+      <HoloDisplay position={[0, 2.05, 0]} />
+      {/* Status LED */}
+      <mesh position={[0.42, -0.15, 0.52]}>
+        <sphereGeometry args={[0.04, 6, 6]} />
+        <meshStandardMaterial {...GLOW} />
+      </mesh>
+    </group>
+  );
+}
+
+// ── LinearFactoryScene ────────────────────────────────────────────────────────
+function LinearFactoryScene() {
+  return (
+    <group>
       <FactoryFloor />
-      {/* 头顶桁架 */}
-      <OverheadGantry />
+      <LinearGantry />
+      <LongConveyor />
 
-      {/* 两条传送带：后排（z=-0.8）和前排（z=0.8） */}
-      <ConveyorBelt position={[0, -1.2, -0.8]} length={8} />
-      <ConveyorBelt position={[0, -1.2, 0.8]} length={8} />
+      {/* Assembly phones — staged progression left-to-right */}
+      <AssemblyPhone position={[-6, -1.15, 0]} stage={0} />
+      <AssemblyPhone position={[-3, -1.15, 0]} stage={1} />
+      <AssemblyPhone position={[0, -1.15, 0]} stage={2} />
+      <AssemblyPhone position={[3, -1.15, 0]} stage={3} />
+      <AssemblyPhone position={[6, -1.15, 0]} stage={5} />
 
-      {/* 后排 3 个机器人：idle / scan / work */}
-      <HumanoidRobot position={[-3, -1.2, -0.85]} variant="idle" phase={0} />
-      <HumanoidRobot position={[0, -1.2, -0.85]} variant="scan" phase={1.2} />
-      <HumanoidRobot position={[3, -1.2, -0.85]} variant="work" phase={2.4} />
+      {/* 5 assembly stations along back wall */}
+      {([-6, -3, 0, 3, 6] as number[]).map((x, i) => (
+        <AssemblyStation key={i} position={[x, 0, -1.4] as [number, number, number]} stationIdx={i} />
+      ))}
 
-      {/* 前排 2 个机器人 */}
-      <HumanoidRobot position={[-1.5, -1.2, 0.9]} variant="work" phase={0.6} />
-      <HumanoidRobot position={[1.8, -1.2, 0.9]} variant="idle" phase={1.8} />
+      {/* Monitoring humanoid robots on front side */}
+      <HumanoidRobot position={[-4, -1.2, 1.8]} variant="idle" phase={0} scale={0.82} />
+      <HumanoidRobot position={[0.5, -1.2, 1.8]} variant="work" phase={1.5} scale={0.88} />
+      <HumanoidRobot position={[5, -1.2, 1.8]} variant="scan" phase={3} scale={0.82} />
 
-      {/* 工业臂在右侧 */}
-      <IndustrialArm position={[4.2, -0.2, 0]} />
+      {/* Entry control rack */}
+      <ControlRack position={[-9, -0.5, 0]} />
 
-      {/* 3 个全息显示面板，悬浮在机器人上方 */}
-      <HoloDisplay position={[-3, 0.2, -0.85]} />
-      <HoloDisplay position={[0, 0.5, -0.85]} />
-      <HoloDisplay position={[3, 0.2, -0.85]} />
-
-      {/* 控制机柜在左侧 */}
-      <ControlRack position={[-4.8, -1.1, 0]} />
-
-      {/* 数据流：从一个机器人/机柜流向另一个 */}
-      <DataStream from={[-3, 0, -0.8]} to={[0, 0.3, -0.8]} speed={0.6} />
-      <DataStream from={[0, 0.3, -0.8]} to={[3, 0, -0.8]} speed={0.6} offset={0.3} />
-      <DataStream from={[-4.5, -0.2, 0]} to={[-3, 0, -0.8]} speed={0.5} offset={0.6} />
+      {/* Data streams between stations */}
+      {([[-6,-3], [-3,0], [0,3], [3,6]] as [number,number][]).map(([from, to], i) => (
+        <DataStream
+          key={i}
+          from={[from, 0.5, -1.4] as [number,number,number]}
+          to={[to, 0.5, -1.4] as [number,number,number]}
+          count={8}
+          speed={0.75}
+          offset={i * 0.35}
+        />
+      ))}
     </group>
   );
 }
@@ -863,18 +992,18 @@ function CinematicCamera() {
   const { camera } = useThree();
 
   const shots = [
-    // 1. Grand establishing — high wide shot, slow push in
-    { pos: [0, 7, 13] as [number, number, number], target: [0, -0.5, 0] as [number, number, number], dur: 5 },
-    // 2. Industrial arm focus — close on the 6-axis arm
-    { pos: [6.5, 2.5, 4] as [number, number, number], target: [4.2, 0.4, 0] as [number, number, number], dur: 4 },
-    // 3. Robot row sweep — eye-level, sweeping along back robot line
-    { pos: [-6, 0, -0.2] as [number, number, number], target: [3, -0.2, -0.85] as [number, number, number], dur: 4 },
-    // 4. Hologram close — tight on central holographic display
-    { pos: [0, 1.2, 1.2] as [number, number, number], target: [0, 0.4, -0.85] as [number, number, number], dur: 3.5 },
-    // 5. Conveyor low angle — dramatic ground-level shot along conveyor
-    { pos: [3.5, -1, 4] as [number, number, number], target: [-2, -1.2, 0] as [number, number, number], dur: 3.5 },
-    // 6. God view finale — pulls back and rises to reveal full factory
-    { pos: [2, 10, 8] as [number, number, number], target: [0, -1, 0] as [number, number, number], dur: 5 },
+    // 1. Establishing — perspective along full production line, right to left
+    { pos: [11, 4, 7] as [number, number, number], target: [-4, -1, 0] as [number, number, number], dur: 5 },
+    // 2. Station 1 close-up — PCB loading robot arm
+    { pos: [-4.5, 1.2, 3] as [number, number, number], target: [-3, -1.1, -0.5] as [number, number, number], dur: 4 },
+    // 3. Center station — components assembly arm in action
+    { pos: [1.5, 0.8, 3] as [number, number, number], target: [0, -1.1, -0.8] as [number, number, number], dur: 3.5 },
+    // 4. Finished iPhone close-up — completed product at station 5
+    { pos: [7.5, 0.4, 2.5] as [number, number, number], target: [6, -1.2, 0] as [number, number, number], dur: 3.5 },
+    // 5. Robot monitoring row — front side eye level tracking left
+    { pos: [-7, -0.2, 5] as [number, number, number], target: [5, -0.5, 1.8] as [number, number, number], dur: 4 },
+    // 6. God view — aerial reveal of entire production line
+    { pos: [0, 12, 4] as [number, number, number], target: [0, -1, 0] as [number, number, number], dur: 5 },
   ];
 
   const desiredPos = useRef(new THREE.Vector3(...shots[0].pos));
@@ -954,10 +1083,8 @@ export function HeroScene() {
       {/* 右侧点光源：照亮工业臂区域 */}
       <pointLight position={[4, 0, 0]} intensity={1.5} color="#39d6ff" distance={4} decay={2} />
 
-      {/* Float 让整个场景轻微浮动 */}
-      <Float speed={0.35} floatIntensity={0.25} rotationIntensity={0.1}>
-        <FactoryScene />
-      </Float>
+      {/* Linear phone assembly factory — no float for grounded industrial feel */}
+      <LinearFactoryScene />
 
       {/* 全场粒子 */}
       <Particles />
