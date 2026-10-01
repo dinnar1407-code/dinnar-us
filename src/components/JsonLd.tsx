@@ -9,7 +9,7 @@ export function OrganizationSchema() {
       "Dinnar engineers vision, motion, and AI into a single platform for lights-out manufacturing.",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "1735 Technology Drive, Suite 720",
+      streetAddress: "97 E Brokaw Road, Suite 380",
       addressLocality: "San Jose",
       addressRegion: "CA",
       postalCode: "95110",

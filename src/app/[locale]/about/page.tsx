@@ -26,7 +26,7 @@ const CONTENT = {
     contact: {
       title: "Get in touch",
       subtitle: "Tell us about your production environment. An engineer will reply within one business day.",
-      address: "1735 Technology Drive, Suite 720, San Jose, CA 95110",
+      address: "97 E Brokaw Road, Suite 380, San Jose, CA 95110",
       email: "hello@dinnar.us",
     },
   },
@@ -52,7 +52,7 @@ const CONTENT = {
     contact: {
       title: "联系我们",
       subtitle: "分享您的生产环境和需求。工程团队将在一个工作日内回复。",
-      address: "1735 Technology Drive, Suite 720, San Jose, CA 95110",
+      address: "97 E Brokaw Road, Suite 380, San Jose, CA 95110",
       email: "hello@dinnar.us",
     },
   },
