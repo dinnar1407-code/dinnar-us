@@ -160,9 +160,9 @@
   },
   "products": {
     "eyebrow": "旗舰平台",
-    "title": "ACI-S1000 + Vision One。",
+    "title": "ACI-S1000 + VisionOne。",
     "subtitle": "一颗大脑，一套训练器，覆盖每一条产线。",
-    "flagshipBody": "ACI-S1000 是每一条鼎纳产线的中枢：以亚毫秒级节拍统一编排视觉、运动控制与 AI 推理。Vision One 是工程师用来设计、训练与部署检测模型的开发平台，无需手写底层代码。",
+    "flagshipBody": "ACI-S1000 是每一条鼎纳产线的中枢：以亚毫秒级节拍统一编排视觉、运动控制与 AI 推理。VisionOne 是工程师用来设计、训练与部署检测模型的开发平台，无需手写底层代码。",
     "aciTitle": "ACI-S1000",
     "aciTagline": "无人工厂控制器 · 工厂边缘",
     "aciHighlights": [
@@ -171,7 +171,7 @@
       "热插拔产线模块、零停机",
       "原生支持 OPC-UA / MQTT / EtherCAT"
     ],
-    "visionTitle": "Vision One",
+    "visionTitle": "VisionOne",
     "visionTagline": "视觉开发平台",
     "visionHighlights": [
       "拖拽式流水线构建",

@@ -279,7 +279,7 @@ function ProductsSection() {
             <Link href="/products" className="btn-primary w-fit">{t("viewAll")}</Link>
           </div>
 
-          {/* Vision One card */}
+          {/* VisionOne card */}
           <div className="card-white p-8 lg:p-10 flex flex-col">
             <span className="tag-accent bg-brand-50 text-brand-600 mb-4 w-fit">Software</span>
             <h3 className="text-2xl font-bold text-navy-500 mb-2">{t("visionTitle")}</h3>

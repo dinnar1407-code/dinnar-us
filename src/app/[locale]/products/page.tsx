@@ -36,8 +36,8 @@ export default async function ProductsPage({ params }: Props) {
           </h1>
           <p className="mt-4 text-gray-300 text-lg max-w-2xl">
             {lang === "zh"
-              ? "ACI-S1000 + Vision One 统一平台，覆盖检测、量测、功能测试、智能组装全场景。"
-              : "ACI-S1000 + Vision One unified platform covering inspection, measurement, functional testing, and smart assembly."}
+              ? "ACI-S1000 + VisionOne 统一平台，覆盖检测、量测、功能测试、智能组装全场景。"
+              : "ACI-S1000 + VisionOne unified platform covering inspection, measurement, functional testing, and smart assembly."}
           </p>
         </div>
       </section>

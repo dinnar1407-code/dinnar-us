@@ -12,7 +12,7 @@ const CONTENT = {
     timeline: [
       { year: "2010", text: "Founded in Suzhou, China as an automation technology startup." },
       { year: "2015", text: "First Fortune 500 consumer electronics OEM deploys Dinnar vision systems." },
-      { year: "2018", text: "Launched Vision One — low-code visual development platform." },
+      { year: "2018", text: "Launched VisionOne — low-code visual development platform." },
       { year: "2020", text: "Expanded to EV battery and semiconductor sectors. 50+ production lines deployed." },
       { year: "2023", text: "Opened U.S. headquarters in San Jose, CA. Launched ACI-S1000 unified controller." },
       { year: "2025", text: "850+ production lines online. 120+ customers globally across 4 continents." },
@@ -38,7 +38,7 @@ const CONTENT = {
     timeline: [
       { year: "2010", text: "在中国苏州成立，作为自动化技术创业公司。" },
       { year: "2015", text: "首家财富500强消费电子OEM部署鼎纳视觉系统。" },
-      { year: "2018", text: "推出 Vision One —— 低代码视觉开发平台。" },
+      { year: "2018", text: "推出 VisionOne —— 低代码视觉开发平台。" },
       { year: "2020", text: "扩展至电动车电池和半导体领域。50+条产线已部署。" },
       { year: "2023", text: "在美国加州圣何塞开设总部。推出ACI-S1000统一控制器。" },
       { year: "2025", text: "850+条产线在线运行。120+客户遍布全球四大洲。" },

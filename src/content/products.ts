@@ -714,7 +714,7 @@ export const products: Product[] = [
     },
     "summary": {
       "en": "LCD Display Metrology: a Dinnar production-line module that combines vision, motion, and on-device AI to inspect, measure, or assemble components at line speed with audit-grade traceability.",
-      "zh": "液晶显示屏幕量测 FPC柔性电路板缺陷检测 平板电脑外观缺陷通用平台 视觉量测设备 双穴平面度检测设备 玻璃平面度检测一体机 滚笔电BC/TC/DH尺寸检测机 手机外观全尺寸检测 功能检测设备 手表后盖玻璃透光性检测一体机 手表后盖玻璃点亮检测设备 手机摄像头模组气密功能检测一体机 手表后盖光学特性测试设备 手机摄像头模组气密性检测设备 力与行程测试设备 智能组装设备 滚轮智能组装线 机器人上下料 电机壳钻攻一体机 微型传感器组装线 汽车门锁组装线 智能检测设备 方形电池外观检测 新能电池Cell外观检测 软件 Vision One 视觉开发平台 探索更"
+      "zh": "液晶显示屏幕量测 FPC柔性电路板缺陷检测 平板电脑外观缺陷通用平台 视觉量测设备 双穴平面度检测设备 玻璃平面度检测一体机 滚笔电BC/TC/DH尺寸检测机 手机外观全尺寸检测 功能检测设备 手表后盖玻璃透光性检测一体机 手表后盖玻璃点亮检测设备 手机摄像头模组气密功能检测一体机 手表后盖光学特性测试设备 手机摄像头模组气密性检测设备 力与行程测试设备 智能组装设备 滚轮智能组装线 机器人上下料 电机壳钻攻一体机 微型传感器组装线 汽车门锁组装线 智能检测设备 方形电池外观检测 新能电池Cell外观检测 软件 VisionOne 视觉开发平台 探索更"
     },
     "headings": {
       "en": [
@@ -752,7 +752,7 @@ export const products: Product[] = [
     },
     "summary": {
       "en": "FPC Flexible Circuit Defect Detection: a Dinnar production-line module that combines vision, motion, and on-device AI to inspect, measure, or assemble components at line speed with audit-grade traceability.",
-      "zh": "FPC柔性电路板缺陷检测 平板电脑外观缺陷通用平台 视觉量测设备 双穴平面度检测设备 玻璃平面度检测一体机 滚笔电BC/TC/DH尺寸检测机 手机外观全尺寸检测 功能检测设备 手表后盖玻璃透光性检测一体机 手表后盖玻璃点亮检测设备 手机摄像头模组气密功能检测一体机 手表后盖光学特性测试设备 手机摄像头模组气密性检测设备 力与行程测试设备 智能组装设备 滚轮智能组装线 机器人上下料 电机壳钻攻一体机 微型传感器组装线 汽车门锁组装线 智能检测设备 方形电池外观检测 新能电池Cell外观检测 软件 Vision One 视觉开发平台 探索更多 公司介绍 招聘"
+      "zh": "FPC柔性电路板缺陷检测 平板电脑外观缺陷通用平台 视觉量测设备 双穴平面度检测设备 玻璃平面度检测一体机 滚笔电BC/TC/DH尺寸检测机 手机外观全尺寸检测 功能检测设备 手表后盖玻璃透光性检测一体机 手表后盖玻璃点亮检测设备 手机摄像头模组气密功能检测一体机 手表后盖光学特性测试设备 手机摄像头模组气密性检测设备 力与行程测试设备 智能组装设备 滚轮智能组装线 机器人上下料 电机壳钻攻一体机 微型传感器组装线 汽车门锁组装线 智能检测设备 方形电池外观检测 新能电池Cell外观检测 软件 VisionOne 视觉开发平台 探索更多 公司介绍 招聘"
     },
     "headings": {
       "en": [
@@ -791,7 +791,7 @@ export const products: Product[] = [
     },
     "summary": {
       "en": "Tablet Appearance Defect Universal Platform: a Dinnar production-line module that combines vision, motion, and on-device AI to inspect, measure, or assemble components at line speed with audit-grade traceability.",
-      "zh": "平板电脑外观缺陷通用平台 视觉量测设备 双穴平面度检测设备 玻璃平面度检测一体机 滚笔电BC/TC/DH尺寸检测机 手机外观全尺寸检测 功能检测设备 手表后盖玻璃透光性检测一体机 手表后盖玻璃点亮检测设备 手机摄像头模组气密功能检测一体机 手表后盖光学特性测试设备 手机摄像头模组气密性检测设备 力与行程测试设备 智能组装设备 滚轮智能组装线 机器人上下料 电机壳钻攻一体机 微型传感器组装线 汽车门锁组装线 智能检测设备 方形电池外观检测 新能电池Cell外观检测 软件 Vision One 视觉开发平台 探索更多 公司介绍 招聘信息 企业文化 新闻资讯"
+      "zh": "平板电脑外观缺陷通用平台 视觉量测设备 双穴平面度检测设备 玻璃平面度检测一体机 滚笔电BC/TC/DH尺寸检测机 手机外观全尺寸检测 功能检测设备 手表后盖玻璃透光性检测一体机 手表后盖玻璃点亮检测设备 手机摄像头模组气密功能检测一体机 手表后盖光学特性测试设备 手机摄像头模组气密性检测设备 力与行程测试设备 智能组装设备 滚轮智能组装线 机器人上下料 电机壳钻攻一体机 微型传感器组装线 汽车门锁组装线 智能检测设备 方形电池外观检测 新能电池Cell外观检测 软件 VisionOne 视觉开发平台 探索更多 公司介绍 招聘信息 企业文化 新闻资讯"
     },
     "headings": {
       "en": [
@@ -831,7 +831,7 @@ export const products: Product[] = [
     },
     "summary": {
       "en": "Watch Back-Cover Glass Light-Transmittance Inspection: a Dinnar production-line module that combines vision, motion, and on-device AI to inspect, measure, or assemble components at line speed with audit-grade traceability.",
-      "zh": "手表后盖玻璃透光性检测一体机 手表后盖玻璃点亮检测设备 手机摄像头模组气密功能检测一体机 手表后盖光学特性测试设备 手机摄像头模组气密性检测设备 力与行程测试设备 智能组装设备 滚轮智能组装线 机器人上下料 电机壳钻攻一体机 微型传感器组装线 汽车门锁组装线 智能检测设备 方形电池外观检测 新能电池Cell外观检测 软件 Vision One 视觉开发平台 探索更多 公司介绍 招聘信息 企业文化 新闻资讯 中 / En 手表后盖玻璃透光性检测一体机 该产品是一种专门用于3C电子行业手表后盖功能检测的设备。 它通过高效的检测程序实现对手表后盖玻璃透光性的检"
+      "zh": "手表后盖玻璃透光性检测一体机 手表后盖玻璃点亮检测设备 手机摄像头模组气密功能检测一体机 手表后盖光学特性测试设备 手机摄像头模组气密性检测设备 力与行程测试设备 智能组装设备 滚轮智能组装线 机器人上下料 电机壳钻攻一体机 微型传感器组装线 汽车门锁组装线 智能检测设备 方形电池外观检测 新能电池Cell外观检测 软件 VisionOne 视觉开发平台 探索更多 公司介绍 招聘信息 企业文化 新闻资讯 中 / En 手表后盖玻璃透光性检测一体机 该产品是一种专门用于3C电子行业手表后盖功能检测的设备。 它通过高效的检测程序实现对手表后盖玻璃透光性的检"
     },
     "headings": {
       "en": [
@@ -871,7 +871,7 @@ export const products: Product[] = [
     },
     "summary": {
       "en": "Watch Back-Cover Glass Light-Up Inspection: a Dinnar production-line module that combines vision, motion, and on-device AI to inspect, measure, or assemble components at line speed with audit-grade traceability.",
-      "zh": "手表后盖玻璃点亮检测设备 手机摄像头模组气密功能检测一体机 手表后盖光学特性测试设备 手机摄像头模组气密性检测设备 力与行程测试设备 智能组装设备 滚轮智能组装线 机器人上下料 电机壳钻攻一体机 微型传感器组装线 汽车门锁组装线 智能检测设备 方形电池外观检测 新能电池Cell外观检测 软件 Vision One 视觉开发平台 探索更多 公司介绍 招聘信息 企业文化 新闻资讯 中 / En 手表后盖玻璃点亮检测设备 针对电子行业手表后盖功能检测，通过检测程序实现光束透过性检测。 采用Macmini测试并上传PDCA 上下层料仓机构，实现上下层 单机台4产"
+      "zh": "手表后盖玻璃点亮检测设备 手机摄像头模组气密功能检测一体机 手表后盖光学特性测试设备 手机摄像头模组气密性检测设备 力与行程测试设备 智能组装设备 滚轮智能组装线 机器人上下料 电机壳钻攻一体机 微型传感器组装线 汽车门锁组装线 智能检测设备 方形电池外观检测 新能电池Cell外观检测 软件 VisionOne 视觉开发平台 探索更多 公司介绍 招聘信息 企业文化 新闻资讯 中 / En 手表后盖玻璃点亮检测设备 针对电子行业手表后盖功能检测，通过检测程序实现光束透过性检测。 采用Macmini测试并上传PDCA 上下层料仓机构，实现上下层 单机台4产"
     },
     "headings": {
       "en": [
@@ -909,7 +909,7 @@ export const products: Product[] = [
     },
     "summary": {
       "en": "Camera Module Airtightness Functional Tester: a Dinnar production-line module that combines vision, motion, and on-device AI to inspect, measure, or assemble components at line speed with audit-grade traceability.",
-      "zh": "手机摄像头模组气密功能检测一体机 手表后盖光学特性测试设备 手机摄像头模组气密性检测设备 力与行程测试设备 智能组装设备 滚轮智能组装线 机器人上下料 电机壳钻攻一体机 微型传感器组装线 汽车门锁组装线 智能检测设备 方形电池外观检测 新能电池Cell外观检测 软件 Vision One 视觉开发平台 探索更多 公司介绍 招聘信息 企业文化 新闻资讯 中 / En 手机摄像头模组气密功能检测一体机 针对电子行业手机摄像头模组防水性测试，通过料仓上料，机械手抓取12pcs上料分三次放料，每次放料4pcs品，运动过程变距实现同时上料，气密性检测，机械手下料O"
+      "zh": "手机摄像头模组气密功能检测一体机 手表后盖光学特性测试设备 手机摄像头模组气密性检测设备 力与行程测试设备 智能组装设备 滚轮智能组装线 机器人上下料 电机壳钻攻一体机 微型传感器组装线 汽车门锁组装线 智能检测设备 方形电池外观检测 新能电池Cell外观检测 软件 VisionOne 视觉开发平台 探索更多 公司介绍 招聘信息 企业文化 新闻资讯 中 / En 手机摄像头模组气密功能检测一体机 针对电子行业手机摄像头模组防水性测试，通过料仓上料，机械手抓取12pcs上料分三次放料，每次放料4pcs品，运动过程变距实现同时上料，气密性检测，机械手下料O"
     },
     "headings": {
       "en": [
@@ -947,7 +947,7 @@ export const products: Product[] = [
     },
     "summary": {
       "en": "Watch Back-Cover Optical-Property Tester: a Dinnar production-line module that combines vision, motion, and on-device AI to inspect, measure, or assemble components at line speed with audit-grade traceability.",
-      "zh": "手表后盖光学特性测试设备 手机摄像头模组气密性检测设备 力与行程测试设备 智能组装设备 滚轮智能组装线 机器人上下料 电机壳钻攻一体机 微型传感器组装线 汽车门锁组装线 智能检测设备 方形电池外观检测 新能电池Cell外观检测 软件 Vision One 视觉开发平台 探索更多 公司介绍 招聘信息 企业文化 新闻资讯 中 / En 手表后盖光学特性测试设备 针对电子行业手表后盖功能检测，通过相机拍照对比940nm米光束下的灰度值对比，来判定产品的透过率检测 采用Macmini测试并上传PDCA 下料机两分BIN机构 双通道8个产品同时多功能检测 速度快，"
+      "zh": "手表后盖光学特性测试设备 手机摄像头模组气密性检测设备 力与行程测试设备 智能组装设备 滚轮智能组装线 机器人上下料 电机壳钻攻一体机 微型传感器组装线 汽车门锁组装线 智能检测设备 方形电池外观检测 新能电池Cell外观检测 软件 VisionOne 视觉开发平台 探索更多 公司介绍 招聘信息 企业文化 新闻资讯 中 / En 手表后盖光学特性测试设备 针对电子行业手表后盖功能检测，通过相机拍照对比940nm米光束下的灰度值对比，来判定产品的透过率检测 采用Macmini测试并上传PDCA 下料机两分BIN机构 双通道8个产品同时多功能检测 速度快，"
     },
     "headings": {
       "en": [
@@ -985,7 +985,7 @@ export const products: Product[] = [
     },
     "summary": {
       "en": "Mobile Camera Module Airtightness Inspection: a Dinnar production-line module that combines vision, motion, and on-device AI to inspect, measure, or assemble components at line speed with audit-grade traceability.",
-      "zh": "手机摄像头模组气密性检测设备 力与行程测试设备 智能组装设备 滚轮智能组装线 机器人上下料 电机壳钻攻一体机 微型传感器组装线 汽车门锁组装线 智能检测设备 方形电池外观检测 新能电池Cell外观检测 软件 Vision One 视觉开发平台 探索更多 公司介绍 招聘信息 企业文化 新闻资讯 中 / En 手机摄像头模组气密性检测设备 针对电子行业手机摄像头模组防水性测试，通过料仓上料，机械手抓取4pcs产品，运动过程变距实现同时上料，气密性检测，机械手下料OK/NG分bin； 采用气密性泄漏仪， 同时对24pcs产品进行气密性检测 双料仓上料 单机台2"
+      "zh": "手机摄像头模组气密性检测设备 力与行程测试设备 智能组装设备 滚轮智能组装线 机器人上下料 电机壳钻攻一体机 微型传感器组装线 汽车门锁组装线 智能检测设备 方形电池外观检测 新能电池Cell外观检测 软件 VisionOne 视觉开发平台 探索更多 公司介绍 招聘信息 企业文化 新闻资讯 中 / En 手机摄像头模组气密性检测设备 针对电子行业手机摄像头模组防水性测试，通过料仓上料，机械手抓取4pcs产品，运动过程变距实现同时上料，气密性检测，机械手下料OK/NG分bin； 采用气密性泄漏仪， 同时对24pcs产品进行气密性检测 双料仓上料 单机台2"
     },
     "headings": {
       "en": [
@@ -1023,7 +1023,7 @@ export const products: Product[] = [
     },
     "summary": {
       "en": "Force & Travel Test Equipment: a Dinnar production-line module that combines vision, motion, and on-device AI to inspect, measure, or assemble components at line speed with audit-grade traceability.",
-      "zh": "力与行程测试设备 智能组装设备 滚轮智能组装线 机器人上下料 电机壳钻攻一体机 微型传感器组装线 汽车门锁组装线 智能检测设备 方形电池外观检测 新能电池Cell外观检测 软件 Vision One 视觉开发平台 探索更多 公司介绍 招聘信息 企业文化 新闻资讯 中 / En 力与行程测试设备 此设备主要用于生产线或实验室车锁开锁力和开锁行程的测试，包含两项测试功能，车锁内开的力和行程的关系，车锁外开的力和行程的关系。程序采用C# VS2019编写，可设置添加不同型号的产品，测试数据可记录，方便查询。界面上完美展示力与行程的关系。 拉力可调节： 通过比例"
+      "zh": "力与行程测试设备 智能组装设备 滚轮智能组装线 机器人上下料 电机壳钻攻一体机 微型传感器组装线 汽车门锁组装线 智能检测设备 方形电池外观检测 新能电池Cell外观检测 软件 VisionOne 视觉开发平台 探索更多 公司介绍 招聘信息 企业文化 新闻资讯 中 / En 力与行程测试设备 此设备主要用于生产线或实验室车锁开锁力和开锁行程的测试，包含两项测试功能，车锁内开的力和行程的关系，车锁外开的力和行程的关系。程序采用C# VS2019编写，可设置添加不同型号的产品，测试数据可记录，方便查询。界面上完美展示力与行程的关系。 拉力可调节： 通过比例"
     },
     "headings": {
       "en": [
@@ -1061,7 +1061,7 @@ export const products: Product[] = [
     },
     "summary": {
       "en": "Roller Smart Assembly Line: a Dinnar production-line module that combines vision, motion, and on-device AI to inspect, measure, or assemble components at line speed with audit-grade traceability.",
-      "zh": "滚轮智能组装线 机器人上下料 电机壳钻攻一体机 微型传感器组装线 汽车门锁组装线 智能检测设备 方形电池外观检测 新能电池Cell外观检测 软件 Vision One 视觉开发平台 探索更多 公司介绍 招聘信息 企业文化 新闻资讯 中 / En 滚轮智能组装线 目前在鼠标生产企业，滚轮组装环节一直采用人工组装的方式，产品质量依赖人工。针对这种情况，研发了滚轮全自动智能组装线，实现了滚轮组装的全自动生产，保证产品质量稳定性的同时大幅缓解了企业用工问题。 1、实现所有零件自动上料，自动组装转子、弱磁定子、皮圈、支架、泡棉等； 2、实现自动点胶、点油、自动测试"
+      "zh": "滚轮智能组装线 机器人上下料 电机壳钻攻一体机 微型传感器组装线 汽车门锁组装线 智能检测设备 方形电池外观检测 新能电池Cell外观检测 软件 VisionOne 视觉开发平台 探索更多 公司介绍 招聘信息 企业文化 新闻资讯 中 / En 滚轮智能组装线 目前在鼠标生产企业，滚轮组装环节一直采用人工组装的方式，产品质量依赖人工。针对这种情况，研发了滚轮全自动智能组装线，实现了滚轮组装的全自动生产，保证产品质量稳定性的同时大幅缓解了企业用工问题。 1、实现所有零件自动上料，自动组装转子、弱磁定子、皮圈、支架、泡棉等； 2、实现自动点胶、点油、自动测试"
     },
     "headings": {
       "en": [
@@ -1099,7 +1099,7 @@ export const products: Product[] = [
     },
     "summary": {
       "en": "Robotic Loading & Unloading: a Dinnar production-line module that combines vision, motion, and on-device AI to inspect, measure, or assemble components at line speed with audit-grade traceability.",
-      "zh": "机器人上下料 电机壳钻攻一体机 微型传感器组装线 汽车门锁组装线 智能检测设备 方形电池外观检测 新能电池Cell外观检测 软件 Vision One 视觉开发平台 探索更多 公司介绍 招聘信息 企业文化 新闻资讯 中 / En 机器人上下料 针对上下料工作频繁、劳动强度大的特性。公司开发了此系统，并在传统的机器人上下料系统中最新增加了视觉控制单元，用于自动识别工件位置，大大降低了机器人上下料时对工件位置的精度要求，从而降低了客户的硬件成本。该视觉控制单元由视觉传感器、控制器等组成 高精度：相机定位，抓取精准。重复抓取精度0.2mm 产品保护：减轻作业强"
+      "zh": "机器人上下料 电机壳钻攻一体机 微型传感器组装线 汽车门锁组装线 智能检测设备 方形电池外观检测 新能电池Cell外观检测 软件 VisionOne 视觉开发平台 探索更多 公司介绍 招聘信息 企业文化 新闻资讯 中 / En 机器人上下料 针对上下料工作频繁、劳动强度大的特性。公司开发了此系统，并在传统的机器人上下料系统中最新增加了视觉控制单元，用于自动识别工件位置，大大降低了机器人上下料时对工件位置的精度要求，从而降低了客户的硬件成本。该视觉控制单元由视觉传感器、控制器等组成 高精度：相机定位，抓取精准。重复抓取精度0.2mm 产品保护：减轻作业强"
     },
     "headings": {
       "en": [
@@ -1137,7 +1137,7 @@ export const products: Product[] = [
     },
     "summary": {
       "en": "Motor Housing Drill & Tap Machine: a Dinnar production-line module that combines vision, motion, and on-device AI to inspect, measure, or assemble components at line speed with audit-grade traceability.",
-      "zh": "电机壳钻攻一体机 微型传感器组装线 汽车门锁组装线 智能检测设备 方形电池外观检测 新能电池Cell外观检测 软件 Vision One 视觉开发平台 探索更多 公司介绍 招聘信息 企业文化 新闻资讯 中 / En 电机壳钻攻一体机 广泛用于3C行业、汽车及零部件、工程机械、小型模具加工、轨道交通、航空航天、医疗器械等行业中的小型板零件、盘型零件、壳体类加工。 模块化：模块化结构，互换性强，拆装方便 兼容性高：可兼容4种产品生产，CT短（30S以内） 高精度:一次定位，多角度孔位钻攻，精度高 单机作业模式:转盘结构，多工位一体加工，业内首创单机作业模式"
+      "zh": "电机壳钻攻一体机 微型传感器组装线 汽车门锁组装线 智能检测设备 方形电池外观检测 新能电池Cell外观检测 软件 VisionOne 视觉开发平台 探索更多 公司介绍 招聘信息 企业文化 新闻资讯 中 / En 电机壳钻攻一体机 广泛用于3C行业、汽车及零部件、工程机械、小型模具加工、轨道交通、航空航天、医疗器械等行业中的小型板零件、盘型零件、壳体类加工。 模块化：模块化结构，互换性强，拆装方便 兼容性高：可兼容4种产品生产，CT短（30S以内） 高精度:一次定位，多角度孔位钻攻，精度高 单机作业模式:转盘结构，多工位一体加工，业内首创单机作业模式"
     },
     "headings": {
       "en": [
@@ -1175,7 +1175,7 @@ export const products: Product[] = [
     },
     "summary": {
       "en": "Micro-Sensor Assembly Line: a Dinnar production-line module that combines vision, motion, and on-device AI to inspect, measure, or assemble components at line speed with audit-grade traceability.",
-      "zh": "微型传感器组装线 汽车门锁组装线 智能检测设备 方形电池外观检测 新能电池Cell外观检测 软件 Vision One 视觉开发平台 探索更多 公司介绍 招聘信息 企业文化 新闻资讯 中 / En 微型传感器组装线 与传统传感器相比，微型传感器具有许多新特性，它们能够弥补传统传感器的不足，具有广泛的应用前景，越来越受到重视，以新的工作机制和物化效应，使用标准工艺兼容的材料，通过MEMS 加工技术制备的新一代传感器件，具有小型化、集成化的特点，可以极大地提高传感器性能。在信号传输方面可减少干扰和噪音，提高信噪比，降低误差，提高灵敏度。 现有的微型传感器的组"
+      "zh": "微型传感器组装线 汽车门锁组装线 智能检测设备 方形电池外观检测 新能电池Cell外观检测 软件 VisionOne 视觉开发平台 探索更多 公司介绍 招聘信息 企业文化 新闻资讯 中 / En 微型传感器组装线 与传统传感器相比，微型传感器具有许多新特性，它们能够弥补传统传感器的不足，具有广泛的应用前景，越来越受到重视，以新的工作机制和物化效应，使用标准工艺兼容的材料，通过MEMS 加工技术制备的新一代传感器件，具有小型化、集成化的特点，可以极大地提高传感器性能。在信号传输方面可减少干扰和噪音，提高信噪比，降低误差，提高灵敏度。 现有的微型传感器的组"
     },
     "headings": {
       "en": [
@@ -1213,7 +1213,7 @@ export const products: Product[] = [
     },
     "summary": {
       "en": "Automotive Door-Lock Assembly Line: a Dinnar production-line module that combines vision, motion, and on-device AI to inspect, measure, or assemble components at line speed with audit-grade traceability.",
-      "zh": "汽车门锁组装线 智能检测设备 方形电池外观检测 新能电池Cell外观检测 软件 Vision One 视觉开发平台 探索更多 公司介绍 招聘信息 企业文化 新闻资讯 中 / En 汽车门锁组装线 应用于汽车门锁组装生产，该组装线加入了MES系统，并把大量旋铆、喷油、打螺丝、激光打码工位加入检测功能并上传MES系统，使每个产品都可追溯到各个的加工工艺和尺寸参数。该产线为柔性产线可拆分组合，兼容不同型号产品，满足不同生产工艺 。 相比传统手工作业线规避了大批量报废的风险把控了各个质量环节，降低不良率。 兼容性强：柔性线体可拆分组合， 兼容不同型号产品，满足不"
+      "zh": "汽车门锁组装线 智能检测设备 方形电池外观检测 新能电池Cell外观检测 软件 VisionOne 视觉开发平台 探索更多 公司介绍 招聘信息 企业文化 新闻资讯 中 / En 汽车门锁组装线 应用于汽车门锁组装生产，该组装线加入了MES系统，并把大量旋铆、喷油、打螺丝、激光打码工位加入检测功能并上传MES系统，使每个产品都可追溯到各个的加工工艺和尺寸参数。该产线为柔性产线可拆分组合，兼容不同型号产品，满足不同生产工艺 。 相比传统手工作业线规避了大批量报废的风险把控了各个质量环节，降低不良率。 兼容性强：柔性线体可拆分组合， 兼容不同型号产品，满足不"
     },
     "headings": {
       "en": [
@@ -1251,7 +1251,7 @@ export const products: Product[] = [
     },
     "summary": {
       "en": "Prismatic Battery Appearance Inspection: a Dinnar production-line module that combines vision, motion, and on-device AI to inspect, measure, or assemble components at line speed with audit-grade traceability.",
-      "zh": "方形电池外观检测 新能电池Cell外观检测 软件 Vision One 视觉开发平台 探索更多 公司介绍 招聘信息 企业文化 新闻资讯 中 / En 方形电池外观检测 外观检测设备检测结果更加准确可靠，ccd视觉检测。 主要检测目标：电池类产品异物、划痕、压痕、极耳不良、污染、腐蚀、凹点、极耳烧伤、喷码不良、字符模糊等外观缺陷检测。 设备采用高像素镜头，检测精度可仪达到μ级。 兼容性强：设备载具可更换载具， 可兼容不同尺寸产品 。 机构精密：可整体翻转180°检测 高精度：6面检测，精度+/-0.005 单站别：设备主要功能为测试锂电池全部表面缺陷 设备"
+      "zh": "方形电池外观检测 新能电池Cell外观检测 软件 VisionOne 视觉开发平台 探索更多 公司介绍 招聘信息 企业文化 新闻资讯 中 / En 方形电池外观检测 外观检测设备检测结果更加准确可靠，ccd视觉检测。 主要检测目标：电池类产品异物、划痕、压痕、极耳不良、污染、腐蚀、凹点、极耳烧伤、喷码不良、字符模糊等外观缺陷检测。 设备采用高像素镜头，检测精度可仪达到μ级。 兼容性强：设备载具可更换载具， 可兼容不同尺寸产品 。 机构精密：可整体翻转180°检测 高精度：6面检测，精度+/-0.005 单站别：设备主要功能为测试锂电池全部表面缺陷 设备"
     },
     "headings": {
       "en": [
@@ -1287,7 +1287,7 @@ export const products: Product[] = [
     },
     "summary": {
       "en": "New-Energy Battery Cell Appearance Inspection: a Dinnar production-line module that combines vision, motion, and on-device AI to inspect, measure, or assemble components at line speed with audit-grade traceability.",
-      "zh": "新能电池Cell外观检测 软件 Vision One 视觉开发平台 探索更多 公司介绍 招聘信息 企业文化 新闻资讯 中 / En 新能电池Cell外观检测 外观检测设备检测结果更加准确可靠，ccd视觉检测。 主要检测目标：电池类产品异物、划痕、压痕、极耳不良、污染、腐蚀、凹点、极耳烧伤、喷码不良、字符模糊等外观缺陷检测。 兼容性强：设备载具可更换载具， 可兼容不同尺寸产品 高精度：6面检测， 精度+/-0.005 单站别：设备主要功能为 测试锂电池全部表面缺陷 设备工艺 CCD尺寸检测， CCD外观缺陷检测等 最小组装精度 ±0.02 mm 适用产品"
+      "zh": "新能电池Cell外观检测 软件 VisionOne 视觉开发平台 探索更多 公司介绍 招聘信息 企业文化 新闻资讯 中 / En 新能电池Cell外观检测 外观检测设备检测结果更加准确可靠，ccd视觉检测。 主要检测目标：电池类产品异物、划痕、压痕、极耳不良、污染、腐蚀、凹点、极耳烧伤、喷码不良、字符模糊等外观缺陷检测。 兼容性强：设备载具可更换载具， 可兼容不同尺寸产品 高精度：6面检测， 精度+/-0.005 单站别：设备主要功能为 测试锂电池全部表面缺陷 设备工艺 CCD尺寸检测， CCD外观缺陷检测等 最小组装精度 ±0.02 mm 适用产品"
     },
     "headings": {
       "en": [
@@ -1321,7 +1321,7 @@ export const products: Product[] = [
     },
     "summary": {
       "en": "Dual-Cavity Flatness Inspection: a Dinnar production-line module that combines vision, motion, and on-device AI to inspect, measure, or assemble components at line speed with audit-grade traceability.",
-      "zh": "双穴平面度检测设备 玻璃平面度检测一体机 滚笔电BC/TC/DH尺寸检测机 手机外观全尺寸检测 功能检测设备 手表后盖玻璃透光性检测一体机 手表后盖玻璃点亮检测设备 手机摄像头模组气密功能检测一体机 手表后盖光学特性测试设备 手机摄像头模组气密性检测设备 力与行程测试设备 智能组装设备 滚轮智能组装线 机器人上下料 电机壳钻攻一体机 微型传感器组装线 汽车门锁组装线 智能检测设备 方形电池外观检测 新能电池Cell外观检测 软件 Vision One 视觉开发平台 探索更多 公司介绍 招聘信息 企业文化 新闻资讯 中 / En 双穴平面度检测设备 智能视"
+      "zh": "双穴平面度检测设备 玻璃平面度检测一体机 滚笔电BC/TC/DH尺寸检测机 手机外观全尺寸检测 功能检测设备 手表后盖玻璃透光性检测一体机 手表后盖玻璃点亮检测设备 手机摄像头模组气密功能检测一体机 手表后盖光学特性测试设备 手机摄像头模组气密性检测设备 力与行程测试设备 智能组装设备 滚轮智能组装线 机器人上下料 电机壳钻攻一体机 微型传感器组装线 汽车门锁组装线 智能检测设备 方形电池外观检测 新能电池Cell外观检测 软件 VisionOne 视觉开发平台 探索更多 公司介绍 招聘信息 企业文化 新闻资讯 中 / En 双穴平面度检测设备 智能视"
     },
     "headings": {
       "en": [
@@ -1360,7 +1360,7 @@ export const products: Product[] = [
     },
     "summary": {
       "en": "Glass Flatness Inspection Machine: a Dinnar production-line module that combines vision, motion, and on-device AI to inspect, measure, or assemble components at line speed with audit-grade traceability.",
-      "zh": "玻璃平面度检测一体机 滚笔电BC/TC/DH尺寸检测机 手机外观全尺寸检测 功能检测设备 手表后盖玻璃透光性检测一体机 手表后盖玻璃点亮检测设备 手机摄像头模组气密功能检测一体机 手表后盖光学特性测试设备 手机摄像头模组气密性检测设备 力与行程测试设备 智能组装设备 滚轮智能组装线 机器人上下料 电机壳钻攻一体机 微型传感器组装线 汽车门锁组装线 智能检测设备 方形电池外观检测 新能电池Cell外观检测 软件 Vision One 视觉开发平台 探索更多 公司介绍 招聘信息 企业文化 新闻资讯 中 / En 玻璃平面度检测一体机 智能视觉尺寸测量系统，是"
+      "zh": "玻璃平面度检测一体机 滚笔电BC/TC/DH尺寸检测机 手机外观全尺寸检测 功能检测设备 手表后盖玻璃透光性检测一体机 手表后盖玻璃点亮检测设备 手机摄像头模组气密功能检测一体机 手表后盖光学特性测试设备 手机摄像头模组气密性检测设备 力与行程测试设备 智能组装设备 滚轮智能组装线 机器人上下料 电机壳钻攻一体机 微型传感器组装线 汽车门锁组装线 智能检测设备 方形电池外观检测 新能电池Cell外观检测 软件 VisionOne 视觉开发平台 探索更多 公司介绍 招聘信息 企业文化 新闻资讯 中 / En 玻璃平面度检测一体机 智能视觉尺寸测量系统，是"
     },
     "headings": {
       "en": [
@@ -1398,7 +1398,7 @@ export const products: Product[] = [
     },
     "summary": {
       "en": "Laptop BC/TC/DH Dimension Measurement Machine: a Dinnar production-line module that combines vision, motion, and on-device AI to inspect, measure, or assemble components at line speed with audit-grade traceability.",
-      "zh": "滚笔电BC/TC/DH尺寸检测机 手机外观全尺寸检测 功能检测设备 手表后盖玻璃透光性检测一体机 手表后盖玻璃点亮检测设备 手机摄像头模组气密功能检测一体机 手表后盖光学特性测试设备 手机摄像头模组气密性检测设备 力与行程测试设备 智能组装设备 滚轮智能组装线 机器人上下料 电机壳钻攻一体机 微型传感器组装线 汽车门锁组装线 智能检测设备 方形电池外观检测 新能电池Cell外观检测 软件 Vision One 视觉开发平台 探索更多 公司介绍 招聘信息 企业文化 新闻资讯 中 / En 滚笔电BC/TC/DH尺寸检测机 针对电子行业笔记本电脑TC的尺寸管"
+      "zh": "滚笔电BC/TC/DH尺寸检测机 手机外观全尺寸检测 功能检测设备 手表后盖玻璃透光性检测一体机 手表后盖玻璃点亮检测设备 手机摄像头模组气密功能检测一体机 手表后盖光学特性测试设备 手机摄像头模组气密性检测设备 力与行程测试设备 智能组装设备 滚轮智能组装线 机器人上下料 电机壳钻攻一体机 微型传感器组装线 汽车门锁组装线 智能检测设备 方形电池外观检测 新能电池Cell外观检测 软件 VisionOne 视觉开发平台 探索更多 公司介绍 招聘信息 企业文化 新闻资讯 中 / En 滚笔电BC/TC/DH尺寸检测机 针对电子行业笔记本电脑TC的尺寸管"
     },
     "headings": {
       "en": [
@@ -1436,7 +1436,7 @@ export const products: Product[] = [
     },
     "summary": {
       "en": "Mobile Phone Appearance & Full-Size Inspection: a Dinnar production-line module that combines vision, motion, and on-device AI to inspect, measure, or assemble components at line speed with audit-grade traceability.",
-      "zh": "手机外观全尺寸检测 功能检测设备 手表后盖玻璃透光性检测一体机 手表后盖玻璃点亮检测设备 手机摄像头模组气密功能检测一体机 手表后盖光学特性测试设备 手机摄像头模组气密性检测设备 力与行程测试设备 智能组装设备 滚轮智能组装线 机器人上下料 电机壳钻攻一体机 微型传感器组装线 汽车门锁组装线 智能检测设备 方形电池外观检测 新能电池Cell外观检测 软件 Vision One 视觉开发平台 探索更多 公司介绍 招聘信息 企业文化 新闻资讯 中 / En 手机外观全尺寸检测 手表后盖功能检测机，是一台软硬一体化UMP，全自动智能制造设备，及标准化机器视觉系"
+      "zh": "手机外观全尺寸检测 功能检测设备 手表后盖玻璃透光性检测一体机 手表后盖玻璃点亮检测设备 手机摄像头模组气密功能检测一体机 手表后盖光学特性测试设备 手机摄像头模组气密性检测设备 力与行程测试设备 智能组装设备 滚轮智能组装线 机器人上下料 电机壳钻攻一体机 微型传感器组装线 汽车门锁组装线 智能检测设备 方形电池外观检测 新能电池Cell外观检测 软件 VisionOne 视觉开发平台 探索更多 公司介绍 招聘信息 企业文化 新闻资讯 中 / En 手机外观全尺寸检测 手表后盖功能检测机，是一台软硬一体化UMP，全自动智能制造设备，及标准化机器视觉系"
     },
     "headings": {
       "en": [
@@ -1469,22 +1469,30 @@ export const products: Product[] = [
       "electron"
     ],
     "title": {
-      "en": "Vision One Visual Development Platform",
-      "zh": "Vision One 视觉开发平台"
+      "en": "VisionOne AI-Native Visual Development Platform",
+      "zh": "VisionOne AI-Native 视觉开发平台"
     },
     "summary": {
-      "en": "Vision One Visual Development Platform: a Dinnar production-line module that combines vision, motion, and on-device AI to inspect, measure, or assemble components at line speed with audit-grade traceability.",
-      "zh": "Vision One 视觉开发平台 探索更多 公司介绍 招聘信息 企业文化 新闻资讯 中 / En Vision One 视觉开发平台 Vision One 视觉开发平台是一款专注于机器视觉和运动控制的低代码图形化集成开发环境。集成了VisionPro算法和Halcon算子，通讯接口，人机交互，多种采集硬件以及几十种常用模块等。 标准化 统一界面风格,调试方式,配置方式。后期批量复制部署迅速,维护简单 平台化 集成多种工业硬件，包含核心算法库模块，HMI 界面设计等多种模块，将配置好的功能快速组建项目 扩展性 支持模块扩展和二次开发。嵌入到用户软件。支持"
+      "en": "VisionOne is Dinnar's AI-Native development platform for machine vision and motion control. On top of a low-code graphical flow editor, the built-in Vision Copilot builds flows, tunes parameters and runs validation in natural language, with a rollback point behind every AI edit.",
+      "zh": "VisionOne 是鼎纳自研的 AI-Native 机器视觉与运动控制一体化开发平台。在低代码图形化流程的基础上，内置 Vision Copilot：用自然语言搭流程、改参数、跑验证，每一次 AI 改动都有回滚点可查可退。"
     },
     "headings": {
       "en": [
-        "咨询 获取资源"
+        "Vision Copilot: natural-language flow building and parameter tuning",
+        "Batch sandbox replay and rollback points for every AI edit",
+        "Dev Cockpit and O&M Cockpit with separate permissions",
+        "In-house Dn algorithm library with PatSky geometric locating",
+        "Integrated VisionPro / Halcon engines, motion control, SPC and MES"
       ],
       "zh": [
-        "咨询 获取资源"
+        "Vision Copilot：自然语言搭流程、改参数、跑验证",
+        "批量沙箱回放验证，AI 改动前自动生成回滚点",
+        "研发开发舱 / 现场运维舱双模式，权限分离",
+        "自研 Dn 算法库与 PatSky 几何定位",
+        "集成 VisionPro / Halcon 引擎、运动控制、SPC 与 MES"
       ]
     },
-    "image": "/images/detection-img04.png"
+    "image": "/images/products/visionone/copilot-nl-tuning.jpg"
   }
 ];
 

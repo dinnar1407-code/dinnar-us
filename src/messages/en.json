@@ -160,9 +160,9 @@
   },
   "products": {
     "eyebrow": "Flagship platform",
-    "title": "ACI-S1000 + Vision One.",
+    "title": "ACI-S1000 + VisionOne.",
     "subtitle": "One controller, one model trainer, every line.",
-    "flagshipBody": "ACI-S1000 is the brain of every Dinnar line: a unified controller that orchestrates vision, motion, and AI inference at sub-millisecond cadence. Vision One is the development platform engineers use to design, train, and deploy inspection models without writing low-level code.",
+    "flagshipBody": "ACI-S1000 is the brain of every Dinnar line: a unified controller that orchestrates vision, motion, and AI inference at sub-millisecond cadence. VisionOne is the development platform engineers use to design, train, and deploy inspection models without writing low-level code.",
     "aciTitle": "ACI-S1000",
     "aciTagline": "Lights-out controller, factory edge",
     "aciHighlights": [
@@ -171,7 +171,7 @@
       "Hot-swap line modules with zero downtime",
       "OPC-UA / MQTT / EtherCAT native"
     ],
-    "visionTitle": "Vision One",
+    "visionTitle": "VisionOne",
     "visionTagline": "Visual development platform",
     "visionHighlights": [
       "Drag-and-drop pipeline builder",

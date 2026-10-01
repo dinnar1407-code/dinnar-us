@@ -3,6 +3,7 @@ import { desensitize } from "@/lib/desensitize";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
+import { VisionOneDetail } from "@/components/products/VisionOneDetail";
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
@@ -21,6 +22,9 @@ export default async function ProductDetailPage({ params }: Props) {
   if (!product) notFound();
 
   const lang = (locale === "zh" ? "zh" : "en") as "en" | "zh";
+
+  // VisionOne 需要图文详述，通用模板放不下，单独走专用版式
+  if (slug === "p-1072") return <VisionOneDetail lang={lang} locale={locale} />;
   const title = desensitize(product.title[lang]);
   const summary = desensitize(product.summary[lang].slice(0, 300));
   const catName = CATEGORY_NAMES[product.category]?.[lang] || product.category;

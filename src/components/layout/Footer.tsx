@@ -12,7 +12,7 @@ export function Footer() {
       title: { en: "Products", zh: "产品" },
       links: [
         { en: "ACI-S1000", zh: "ACI-S1000", href: "/products/p-1098" },
-        { en: "Vision One", zh: "Vision One", href: "/products/p-1072" },
+        { en: "VisionOne", zh: "VisionOne", href: "/products/p-1072" },
         { en: "All Equipment", zh: "全部设备", href: "/products" },
       ],
     },
