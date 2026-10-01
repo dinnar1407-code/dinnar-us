@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Link } from "@/i18n/routing";
 import { ScrollAnimations } from "@/components/ui/ScrollAnimations";
 import { ContactForm } from "@/components/ui/ContactForm";
+import { HeroFx } from "@/components/ui/HeroFx";
 
 export default function HomePage() {
   const t = useTranslations("hero");
@@ -14,18 +15,20 @@ export default function HomePage() {
       <ScrollAnimations />
       {/* Hero */}
       <section className="relative min-h-[85vh] flex items-center overflow-hidden bg-gradient-to-br from-navy-500 via-navy-600 to-navy-700">
-        {/* 首屏背景：火星黑灯工厂概念图。工厂主体在画面右侧，所以裁切时优先保住右边 */}
+        {/* 首屏背景：火星黑灯工厂概念图。工厂主体在画面右侧，所以裁切时靠右对齐（HeroFx 特效层按同样的方式对齐，两者必须一致） */}
         <Image
           src="/images/hero-mars-factory.jpg"
           alt=""
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[72%_center]"
+          className="object-cover object-right"
         />
         {/* 左侧压暗渐变：保证标题和数据卡在图上清晰可读；小屏文字铺满整宽，所以整体再压一层 */}
         <div className="absolute inset-0 bg-gradient-to-r from-navy-700/70 via-navy-700/30 to-transparent" />
         <div className="absolute inset-0 bg-navy-700/45 md:bg-transparent" />
+        {/* 动态特效层：激光扫描、相机闪光、灯带流动等 */}
+        <HeroFx />
         {/* Content overlay */}
         <div className="container-page relative z-10 py-20">
           <div className="max-w-3xl">
