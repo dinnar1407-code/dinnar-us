@@ -24,6 +24,10 @@ const INDUSTRY_CONTENT: Record<string, { en: { title: string; summary: string };
     en: { title: "Medical & Industrial", summary: "Surgical staplers, saline bottles, and precision mechanical parts to ISO standards." },
     zh: { title: "医疗及其他行业", summary: "医用吻合器、盐水瓶、精密机械零件，符合ISO标准。" },
   },
+  "food-pharma": {
+    en: { title: "Food, Pharma & Cosmetics", summary: "Bottles, cans, pouches, tubes, and blister packs \u2014 inline inspection of packaging appearance, date codes, seals, and fill level." },
+    zh: { title: "食品 / 药品 / 化妆品", summary: "瓶、罐、袋、管、泡罩——包装外观、喷码、封口与液位在线全检。" },
+  },
 };
 
 export default async function IndustriesPage({ params }: Props) {
@@ -58,6 +62,7 @@ export default async function IndustriesPage({ params }: Props) {
               semiconductor: "from-purple-500 to-indigo-500",
               display: "from-orange-500 to-red-500",
               other: "from-teal-500 to-cyan-500",
+              "food-pharma": "from-pink-500 to-rose-500",
             };
             return (
               <Link

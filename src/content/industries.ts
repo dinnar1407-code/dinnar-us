@@ -1,9 +1,9 @@
 // AUTO-GENERATED industries metadata.
 import type { LucideIcon } from 'lucide-react';
-import { Battery, Boxes, Cpu, Microscope, Monitor } from 'lucide-react';
+import { Battery, Boxes, Cpu, Microscope, Monitor, Pill } from 'lucide-react';
 
 export type Industry = {
-  slug: 'electron' | 'energy' | 'semiconductor' | 'display' | 'other';
+  slug: 'electron' | 'energy' | 'semiconductor' | 'display' | 'other' | 'food-pharma';
   i18nKey: string;
   icon: LucideIcon;
   image: string;
@@ -15,6 +15,7 @@ export const industries: Industry[] = [
   { slug: 'semiconductor', i18nKey: 'semiconductor', icon: Microscope, image: '/images/industry-semiconductor.svg' },
   { slug: 'display', i18nKey: 'display', icon: Monitor, image: '/images/industry-display.svg' },
   { slug: 'other', i18nKey: 'other', icon: Boxes, image: '/images/industry-other.svg' },
+  { slug: 'food-pharma', i18nKey: 'foodPharma', icon: Pill, image: '/images/industry-other.svg' },
 ];
 
 export const industriesBySlug = new Map(industries.map((i) => [i.slug, i]));

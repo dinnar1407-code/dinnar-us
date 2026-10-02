@@ -156,6 +156,17 @@
         "Universal cross-shaft appearance inspection",
         "Full per-part audit trail"
       ]
+    },
+    "foodPharma": {
+      "title": "Food, Pharma & Cosmetics",
+      "summary": "Bottles, cans, pouches, tubes, and blister packs — inline inspection of packaging appearance, date codes, seals, and fill level.",
+      "longDescription": "Food, pharmaceutical, and cosmetics lines run fast and change over often, and any packaging flaw goes straight to the consumer. Dinnar builds vision inspection into filling, sealing, labeling, and cartoning: reading and verifying date and lot codes, checking seals and caps, measuring fill level, and catching foreign matter, missing tablets, and cosmetic scratches — with a traceable inspection record for every unit.",
+      "highlights": [
+        "Date-code / label OCR and lot verification",
+        "Seal, cap, and foil integrity inspection",
+        "Fill level, missing-count, and foreign-matter detection",
+        "Bottle, tube, and carton appearance defect inspection"
+      ]
     }
   },
   "products": {

@@ -233,6 +233,7 @@ function IndustriesSection() {
     { slug: "semiconductor", title: t("semiconductor.title"), summary: t("semiconductor.summary"), color: "from-purple-500 to-indigo-500" },
     { slug: "display", title: t("display.title"), summary: t("display.summary"), color: "from-orange-500 to-red-500" },
     { slug: "other", title: t("other.title"), summary: t("other.summary"), color: "from-teal-500 to-cyan-500" },
+    { slug: "food-pharma", title: t("foodPharma.title"), summary: t("foodPharma.summary"), color: "from-pink-500 to-rose-500" },
   ];
 
   return (

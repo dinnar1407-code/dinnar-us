@@ -19,7 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "p-909", "p-933", "p-953", "p-965",
   ];
 
-  const industries = ["electron", "energy", "semiconductor", "display", "other"];
+  const industries = ["electron", "energy", "semiconductor", "display", "other", "food-pharma"];
 
   const entries: MetadataRoute.Sitemap = [];
 

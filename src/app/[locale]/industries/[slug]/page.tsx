@@ -78,6 +78,20 @@ const DETAILS: Record<string, { en: { title: string; summary: string; longDesc: 
       highlights: ["医用吻合器仓订检测", "医用盐水瓶缺陷检测", "万向十字轴外观检测", "零件级全审计追踪"],
     },
   },
+  "food-pharma": {
+    en: {
+      title: "Food, Pharma & Cosmetics",
+      summary: "Bottles, cans, pouches, tubes, and blister packs — inline inspection of packaging appearance, date codes, seals, and fill level.",
+      longDesc: "Food, pharmaceutical, and cosmetics lines run fast and change over often, and any packaging flaw goes straight to the consumer. Dinnar builds vision inspection into filling, sealing, labeling, and cartoning: reading and verifying date and lot codes, checking seals and caps, measuring fill level, and catching foreign matter, missing tablets, and cosmetic scratches — with a traceable inspection record for every unit.",
+      highlights: ["Date-code / label OCR and lot verification", "Seal, cap, and foil integrity inspection", "Fill level, missing-count, and foreign-matter detection", "Bottle, tube, and carton appearance defect inspection"],
+    },
+    zh: {
+      title: "食品 / 药品 / 化妆品",
+      summary: "瓶、罐、袋、管、泡罩——包装外观、喷码、封口与液位在线全检。",
+      longDesc: "食品、药品与化妆品的产线速度快、品种切换频繁，而包装上的任何瑕疵都会直接到达消费者手中。鼎纳把视觉检测嵌入灌装、封口、贴标与装盒各工序：读取并核对生产日期与批号，检查封口与瓶盖，测量液位，识别异物、缺粒与外观划伤，并为每一件产品留下可追溯的检测记录。",
+      highlights: ["喷码 / 标签字符识别与批号核对", "封口、瓶盖与铝箔完整性检测", "液位、缺粒与异物检测", "瓶身、软管与外盒外观缺陷检测"],
+    },
+  },
 };
 
 const COLORS: Record<string, string> = {
@@ -86,9 +100,10 @@ const COLORS: Record<string, string> = {
   semiconductor: "from-purple-600 to-indigo-400",
   display: "from-orange-600 to-red-400",
   other: "from-teal-600 to-cyan-400",
+  "food-pharma": "from-pink-600 to-rose-400",
 };
 
-type IndustrySlug = "electron" | "energy" | "semiconductor" | "display" | "other";
+type IndustrySlug = "electron" | "energy" | "semiconductor" | "display" | "other" | "food-pharma";
 
 export default async function IndustryDetailPage({ params }: Props) {
   const { locale, slug } = await params;
